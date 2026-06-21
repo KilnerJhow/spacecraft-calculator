@@ -1,6 +1,6 @@
-// Data model for items and their crafting recipes in SpaceCraft
+import type { Item } from '../types';
 
-export const itemsData = {
+export const itemsData: Record<string, Item> = {
   "wire": {
     "name": "Wire",
     "isBase": false,
@@ -517,18 +517,62 @@ export const itemsData = {
       }
     ]
   },
-  "assemblre": {
-    "name": "Assemblre",
+  "assembler": {
+    "name": "Assembler",
     "isBase": false,
     "recipes": [
       {
-        "id": "assemblre_recipe",
+        "id": "assembler_recipe",
         "yield": 1,
         "inputs": {
           "structural_beam": 4,
           "stainless_plate": 8,
           "concrete": 40,
           "motor": 3
+        }
+      }
+    ]
+  },
+  "solar_cell": {
+    "name": "Solar Cell",
+    "isBase": false,
+    "recipes": [
+      {
+        "id": "solar_cell_recipe",
+        "yield": 5,
+        "inputs": {
+          "stainless_plate": 1,
+          "semicondutor_substrate": 1,
+          "wire": 5
+        }
+      }
+    ]
+  },
+  "solar_plant": {
+    "name": "Solar Plant",
+    "isBase": false,
+    "recipes": [
+      {
+        "id": "solar_plant_recipe",
+        "yield": 1,
+        "inputs": {
+          "structural_beam": 1,
+          "stainless_plate": 9,
+          "solar_cell": 36
+        }
+      }
+    ]
+  },
+  "micro_furnace": {
+    "name": "Micro-Furnace",
+    "isBase": false,
+    "recipes": [
+      {
+        "id": "micro_furnace_recipe",
+        "yield": 1,
+        "inputs": {
+          "stainless_plate": 2,
+          "concrete": 5
         }
       }
     ]

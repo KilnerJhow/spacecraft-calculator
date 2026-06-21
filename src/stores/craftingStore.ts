@@ -2,11 +2,12 @@ import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import { itemsData } from '../data/items'
 import { calculateCartPossibilities } from '../utils/calculator'
+import type { CartItem } from '../types'
 
 export const useCraftingStore = defineStore('crafting', () => {
   // --- State ---
-  const cart = ref(JSON.parse(localStorage.getItem('spacecraft-calc-cart')) || [])
-  const inventory = ref(JSON.parse(localStorage.getItem('spacecraft-calc-inventory')) || {})
+  const cart = ref<CartItem[]>(JSON.parse(localStorage.getItem('spacecraft-calc-cart') || '[]'))
+  const inventory = ref<Record<string, number>>(JSON.parse(localStorage.getItem('spacecraft-calc-inventory') || '{}'))
   const activePreference = ref('ore')
   const cartSearchQuery = ref('')
   const inventorySearchQuery = ref('')
@@ -93,8 +94,8 @@ export const useCraftingStore = defineStore('crafting', () => {
       const itemA = group.items[0]
       const itemB = group.items[1]
 
-      const qtyA = oreRes[itemA] || 0
-      const qtyB = nuggetRes[itemB] || 0
+      const qtyA = oreRes[itemA as string] || 0
+      const qtyB = nuggetRes[itemB as string] || 0
 
       if (qtyA > 0 || qtyB > 0) {
         list.push({
@@ -128,7 +129,7 @@ export const useCraftingStore = defineStore('crafting', () => {
     return list
   })
 
-  const accumulateCraftedItems = (node, accumulated = {}) => {
+  const accumulateCraftedItems = (node: any, accumulated: Record<string, number> = {}) => {
     if (!node) return accumulated
     
     if (!node.isBase && node.crafted > 0) {
@@ -148,7 +149,7 @@ export const useCraftingStore = defineStore('crafting', () => {
   const itemsToCraft = computed(() => {
     if (!activePossibility.value) return []
     
-    const accumulated = {}
+    const accumulated: Record<string, number> = {}
     for (const tree of activePossibility.value.trees) {
       accumulateCraftedItems(tree, accumulated)
     }
@@ -163,11 +164,25 @@ export const useCraftingStore = defineStore('crafting', () => {
   const inventoryList = computed(() => {
     const itemIds = new Set(Object.keys(inventory.value))
     
-    let needed = {}
+    let needed: Record<string, number> = {}
     if (activeCart.value.length > 0) {
       try {
         const result = calculateCartPossibilities(activeCart.value, itemsData, {}, activePreference.value)
-        needed = result[0]?.baseResources || {}
+        const possibility = result[0]
+        if (possibility && possibility.trees) {
+          const collectNeeded = (node: any) => {
+            if (!node) return
+            needed[node.id] = (needed[node.id] || 0) + node.quantity
+            if (node.children) {
+              for (const child of node.children) {
+                collectNeeded(child)
+              }
+            }
+          }
+          for (const tree of possibility.trees) {
+            collectNeeded(tree)
+          }
+        }
       } catch (e) {
         console.error(e)
       }
@@ -197,7 +212,7 @@ export const useCraftingStore = defineStore('crafting', () => {
   })
 
   // --- Actions ---
-  const getRequiredItems = (itemId, visited = new Set()) => {
+  const getRequiredItems = (itemId: string, visited = new Set<string>()) => {
     if (visited.has(itemId)) return visited
     visited.add(itemId)
     const item = itemsData[itemId]
@@ -213,38 +228,39 @@ export const useCraftingStore = defineStore('crafting', () => {
     return visited
   }
 
-  const addToCart = (selectedItem, quantity) => {
-    if (selectedItem && quantity > 0) {
-      const existing = cart.value.find(i => i.itemId === selectedItem)
+  const addToCart = (selectedItem: any, quantity: number) => {
+    const itemId = (selectedItem && typeof selectedItem === 'object') ? selectedItem.value : selectedItem
+    if (itemId && quantity > 0) {
+      const item = itemsData[itemId]
+      if (!item) {
+        console.warn(`Item with ID "${itemId}" not found in database.`, selectedItem)
+        return
+      }
+
+      const existing = cart.value.find(i => i.id === itemId)
       if (existing) {
         existing.quantity += quantity
         existing.active = true
-      } else {
-        cart.value.push({
-          id: Date.now(),
-          itemId: selectedItem,
-          name: itemsData[selectedItem].name,
-          quantity: quantity,
-          active: true
-        })
+      } else if (itemId) {
+        cart.value.push({ id: itemId, name: item.name, quantity: quantity, active: true })
       }
 
       // Add selected item and all recursive dependencies to inventory with 0 if not present
-      const reqItems = getRequiredItems(selectedItem)
-      for (const itemId of reqItems) {
-        if (inventory.value[itemId] === undefined) {
-          inventory.value[itemId] = 0
+      const reqItems = getRequiredItems(itemId)
+      for (const reqId of reqItems) {
+        if (inventory.value[reqId] === undefined) {
+          inventory.value[reqId] = 0
         }
       }
       inventory.value = { ...inventory.value }
     }
   }
 
-  const removeFromCart = (id) => {
+  const removeFromCart = (id: string) => {
     cart.value = cart.value.filter(item => item.id !== id)
   }
 
-  const updateCartQty = (id, newQty) => {
+  const updateCartQty = (id: string | number, newQty: number) => {
     if (newQty === null) return
     if (newQty < 1) {
       cartError.value = "Quantity must be at least 1."
@@ -259,33 +275,40 @@ export const useCraftingStore = defineStore('crafting', () => {
     }
   }
 
-  const toggleCartItemActive = (id) => {
+  const toggleCartItemActive = (id: string | number) => {
     const item = cart.value.find(i => i.id === id)
     if (item) {
       item.active = item.active === false ? true : false
     }
   }
 
-  const addToInventory = (inventoryItem, inventoryQty) => {
-    if (inventoryItem && inventoryQty > 0) {
-      inventory.value[inventoryItem] = (inventory.value[inventoryItem] || 0) + inventoryQty
+  const addToInventory = (inventoryItem: any, inventoryQty: number) => {
+    const itemId = (inventoryItem && typeof inventoryItem === 'object') ? inventoryItem.value : inventoryItem
+    if (itemId && inventoryQty > 0) {
+      const item = itemsData[itemId]
+      if (!item) {
+        console.warn(`Item with ID "${itemId}" not found in database.`, inventoryItem)
+        return
+      }
+
+      inventory.value[itemId] = (inventory.value[itemId] || 0) + inventoryQty
 
       // Add all recursive dependencies to inventory with 0 if not present
-      const reqItems = getRequiredItems(inventoryItem)
-      for (const itemId of reqItems) {
-        if (inventory.value[itemId] === undefined) {
-          inventory.value[itemId] = 0
+      const reqItems = getRequiredItems(itemId)
+      for (const reqId of reqItems) {
+        if (inventory.value[reqId] === undefined) {
+          inventory.value[reqId] = 0
         }
       }
       inventory.value = { ...inventory.value }
     }
   }
 
-  const removeFromInventory = (itemId) => {
+  const removeFromInventory = (itemId: string) => {
     delete inventory.value[itemId]
   }
 
-  const updateInventoryQty = (itemId, newQty) => {
+  const updateInventoryQty = (itemId: string, newQty: number) => {
     if (newQty === null) return
     if (newQty < 0) {
       inventoryError.value = "Quantity cannot be negative."
@@ -294,6 +317,10 @@ export const useCraftingStore = defineStore('crafting', () => {
     }
     inventoryError.value = ''
     inventory.value[itemId] = newQty
+  }
+
+  const clearInventory = () => {
+    inventory.value = {}
   }
 
   return {
@@ -320,6 +347,7 @@ export const useCraftingStore = defineStore('crafting', () => {
     toggleCartItemActive,
     addToInventory,
     removeFromInventory,
-    updateInventoryQty
+    updateInventoryQty,
+    clearInventory
   }
 })

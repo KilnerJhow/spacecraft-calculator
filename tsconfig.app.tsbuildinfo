@@ -1,0 +1,1 @@
+{"root":["./src/main.ts","./src/vite-env.d.ts","./src/data/items.ts","./src/stores/craftingstore.ts","./src/types/index.ts","./src/utils/calculator.ts","./src/app.vue","./src/components/baseresourcessummary.vue","./src/components/helloworld.vue","./src/components/recipecalculator.vue","./src/components/recipedatabase.vue","./src/components/supplychaintree.vue"],"version":"6.0.3"}

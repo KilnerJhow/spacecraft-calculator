@@ -2,9 +2,9 @@ import { itemsData } from './src/data/items.js';
 import { calculateCartPossibilities } from './src/utils/calculator.js';
 
 try {
-  console.log("Testing recipe calculation for Assemblre...");
+  console.log("Testing recipe calculation for Assembler...");
   
-  const cart = [{ itemId: 'assemblre', quantity: 1 }];
+  const cart = [{ itemId: 'assembler', quantity: 1 }];
   
   console.log("\n--- Scenario A: Preferring Ore ---");
   const resultOre = calculateCartPossibilities(cart, itemsData, {}, 'ore');

@@ -1,3 +1,5 @@
+import type { Item, SupplyChainResult } from '../types';
+
 /**
  * Calculates all possible supply chains for a given item and quantity, factoring in available inventory.
  * 
@@ -7,7 +9,7 @@
  * @param {object} inventoryState - The current state of available inventory { itemId: qty }.
  * @returns {Array} An array of possible supply chains, each returning an updated remainingInventory.
  */
-export function calculatePossibilities(itemId, quantity, itemsData, inventoryState = {}, preference = 'ore') {
+export function calculatePossibilities(itemId: string, quantity: number, itemsData: Record<string, Item>, inventoryState: Record<string, number> = {}, preference: string = 'ore'): SupplyChainResult[] {
   let inventory = { ...inventoryState };
   let fromInventory = 0;
   let remainingQuantity = quantity;
@@ -153,7 +155,7 @@ export function calculatePossibilities(itemId, quantity, itemsData, inventorySta
   // Calculate inputs needed for this greedy allocation
   let totalRuns = 0;
   let totalYielded = 0;
-  const inputsMap = {};
+  const inputsMap: Record<string, number> = {};
   const recipeDetails = [];
 
   for (let i = 0; i < recipes.length; i++) {
@@ -202,6 +204,7 @@ export function calculatePossibilities(itemId, quantity, itemsData, inventorySta
         quantity: quantity,
         fromInventory: fromInventory,
         crafted: remainingQuantity,
+        gathered: 0,
         runs: totalRuns,
         yielded: totalYielded,
         isBase: false,
@@ -221,14 +224,14 @@ export function calculatePossibilities(itemId, quantity, itemsData, inventorySta
  * @param {string} preference - The recipe preference ('ore' or 'nugget').
  * @returns {Array} An array of combined possibilities.
  */
-export function calculateCartPossibilities(cartItems, itemsData, initialInventory = {}, preference = 'ore') {
+export function calculateCartPossibilities(cartItems: any[], itemsData: Record<string, Item>, initialInventory: Record<string, number> = {}, preference: string = 'ore'): any[] {
   if (!cartItems || cartItems.length === 0) return [];
 
   let currentPossibilities = [
     {
-      baseResources: {},
-      remainingInventory: { ...initialInventory },
-      trees: []
+      baseResources: {} as Record<string, number>,
+      remainingInventory: { ...initialInventory } as Record<string, number>,
+      trees: [] as any[]
     }
   ];
 
@@ -245,7 +248,7 @@ export function calculateCartPossibilities(cartItems, itemsData, initialInventor
       );
 
       for (const itemPoss of itemPossibilities) {
-         const combinedBase = { ...currPoss.baseResources };
+         const combinedBase: Record<string, number> = { ...currPoss.baseResources };
          for (const [resId, resQty] of Object.entries(itemPoss.baseResources)) {
            combinedBase[resId] = (combinedBase[resId] || 0) + resQty;
          }

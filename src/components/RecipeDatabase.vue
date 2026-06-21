@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 import { itemsData } from '../data/items'
 import Card from 'primevue/card'
@@ -39,7 +39,7 @@ const filteredItems = computed(() => {
   })
 })
 
-const formatName = (key) => {
+const formatName = (key: string) => {
   return itemsData[key]?.name || key
 }
 </script>
@@ -99,7 +99,7 @@ const formatName = (key) => {
             <div class="card-body">
               <!-- Crafted Recipes -->
               <div v-if="!item.isBase && item.recipes && item.recipes.length > 0" class="recipes-container">
-                <div v-for="(recipe, rIdx) in item.recipes" :key="recipe.id" class="recipe-block">
+                <div v-for="recipe in item.recipes" :key="recipe.id" class="recipe-card">
                   <div class="recipe-header">
                     <span class="recipe-id">Recipe: {{ recipe.id.replace(/_/g, ' ') }}</span>
                   </div>

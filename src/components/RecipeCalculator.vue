@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import Dropdown from 'primevue/dropdown'
@@ -38,8 +38,8 @@ const {
   removeFromCart,
   updateCartQty,
   toggleCartItemActive,
-  removeFromInventory,
-  updateInventoryQty
+  updateInventoryQty,
+  clearInventory
 } = store
 
 const itemsOptions = Object.keys(itemsData).map(key => ({
@@ -58,11 +58,21 @@ const inventoryQty = ref(1)
 const isCartExpanded = ref(false)
 const isInventoryExpanded = ref(false)
 
-const deletingItemId = ref(null)
+const deletingItemId = ref<string | null>(null)
+const showClearConfirm = ref(false)
 
-const confirmDeleteInventory = (id) => {
-  removeFromInventory(id)
+const confirmDeleteInventory = (id: string) => {
+  store.removeFromInventory(id)
   deletingItemId.value = null
+}
+
+const handleClearInventory = () => {
+  if (typeof clearInventory === 'function') {
+    clearInventory()
+  } else {
+    inventory.value = {}
+  }
+  showClearConfirm.value = false
 }
 
 const handleAddToCart = () => {
@@ -201,7 +211,21 @@ const preferenceOptions = [
 
       <!-- Inventory Panel -->
       <Card class="input-card flex-1">
-        <template #title>My Inventory <i class="pi pi-box ml-2"></i></template>
+        <template #title>
+          <div class="flex justify-content-between align-items-center w-full">
+            <span>My Inventory <i class="pi pi-box ml-2"></i></span>
+            <Button 
+              v-if="Object.keys(inventory).length > 0"
+              label="Clear All" 
+              icon="pi pi-trash" 
+              severity="danger" 
+              text 
+              size="small" 
+              @click="showClearConfirm = true"
+              style="padding: 0.25rem 0.5rem;"
+            />
+          </div>
+        </template>
         <template #content>
           <div class="input-group">
             <div class="field">
@@ -371,6 +395,23 @@ const preferenceOptions = [
         <span v-if="cart.length > 0">All items in the crafting list are deactivated. Activate items to see the combined supply chain.</span>
         <span v-else>Add items to your crafting list to see the combined supply chain.</span>
       </Message>
+    </div>
+
+    <!-- Custom Confirmation Modal for Clearing Inventory -->
+    <div v-if="showClearConfirm" class="modal-backdrop">
+      <div class="modal-content">
+        <div class="modal-header">
+          <i class="pi pi-exclamation-triangle warning-icon"></i>
+          <h3>Clear Inventory</h3>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to clear your entire inventory? This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+          <Button label="Cancel" severity="secondary" @click="showClearConfirm = false" />
+          <Button label="Clear All" severity="danger" @click="handleClearInventory" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -588,5 +629,75 @@ h3 {
   border-radius: 0 !important;
   width: 100%;
   padding: 0.5rem !important;
+}
+
+/* Custom Confirmation Modal Styling */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: var(--p-surface-900);
+  border: 1px solid var(--p-surface-700);
+  border-radius: var(--p-border-radius);
+  width: 90%;
+  max-width: 400px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.2s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: 1.25rem;
+  color: var(--p-surface-0);
+}
+
+.modal-header .warning-icon {
+  font-size: 1.5rem;
+  color: #f87171;
+}
+
+.modal-body {
+  color: var(--p-surface-300);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 </style>

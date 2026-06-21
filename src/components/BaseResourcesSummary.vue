@@ -1,16 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import Checkbox from 'primevue/checkbox'
 
-const props = defineProps({
-  resources: {
-    type: Array,
-    required: true
-  }
-})
+const props = defineProps<{
+  resources: any[]
+}>()
 
 // Track checked resource IDs
-const selectedResources = ref([])
+const selectedResources = ref<string[]>([])
 
 // Clear checkboxes when the resource requirements change
 watch(() => props.resources, () => {

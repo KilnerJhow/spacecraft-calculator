@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import RecipeCalculator from './components/RecipeCalculator.vue'
 import RecipeDatabase from './components/RecipeDatabase.vue'
