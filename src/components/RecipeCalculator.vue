@@ -31,7 +31,8 @@ const {
   hasAlternatives,
   mergedBaseResources,
   itemsToCraft,
-  inventoryList
+  inventoryList,
+  activeCart
 } = storeToRefs(store)
 
 const {
@@ -39,7 +40,8 @@ const {
   updateCartQty,
   toggleCartItemActive,
   updateInventoryQty,
-  clearInventory
+  clearInventory,
+  markCartItemCompleted
 } = store
 
 const itemsOptions = Object.keys(itemsData).map(key => ({
@@ -60,6 +62,8 @@ const isInventoryExpanded = ref(false)
 
 const deletingItemId = ref<string | null>(null)
 const showClearConfirm = ref(false)
+const showCompleteConfirm = ref(false)
+const itemToComplete = ref<any>(null)
 
 const confirmDeleteInventory = (id: string) => {
   store.removeFromInventory(id)
@@ -75,12 +79,33 @@ const handleClearInventory = () => {
   showClearConfirm.value = false
 }
 
+const confirmMarkAsCompleted = (item: any) => {
+  itemToComplete.value = item
+  showCompleteConfirm.value = true
+}
+
+const handleMarkAsCompleted = () => {
+  if (itemToComplete.value) {
+    markCartItemCompleted(itemToComplete.value.id)
+    showCompleteConfirm.value = false
+    itemToComplete.value = null
+  }
+}
+
 const handleAddToCart = () => {
   store.addToCart(selectedItem.value, quantity.value)
 }
 
 const handleAddToInventory = () => {
   store.addToInventory(inventoryItem.value, inventoryQty.value)
+}
+
+const handleResourceSelected = (res: any) => {
+  store.addToInventory(res.id, res.quantity)
+}
+
+const handleCraftedItem = (item: any) => {
+  store.addToInventory(item.id, item.quantity)
 }
 
 const preferenceOptions = [
@@ -149,6 +174,21 @@ const preferenceOptions = [
                     <template #body="slotProps">
                         <Button 
                           type="button" 
+                          icon="pi pi-check" 
+                          severity="success" 
+                          text 
+                          rounded 
+                          title="Mark as completed" 
+                          aria-label="Mark as completed" 
+                          :disabled="slotProps.data.active === false"
+                          @click="confirmMarkAsCompleted(slotProps.data)" 
+                        />
+                    </template>
+                </Column>
+                <Column headerStyle="width: 3rem; text-align: center" bodyStyle="text-align: center">
+                    <template #body="slotProps">
+                        <Button 
+                          type="button" 
                           :icon="slotProps.data.active !== false ? 'pi pi-eye' : 'pi pi-eye-slash'" 
                           :severity="slotProps.data.active !== false ? 'success' : 'secondary'" 
                           text 
@@ -169,14 +209,14 @@ const preferenceOptions = [
                 <Column header="Quantity">
                     <template #body="slotProps">
                       <div style="display: flex; align-items: center; gap: 0.25rem;" :style="{ opacity: slotProps.data.active !== false ? 1 : 0.5 }">
-                        <Button icon="pi pi-minus" text rounded size="small" :disabled="slotProps.data.active === false" @click="updateCartQty(slotProps.data.id, slotProps.data.quantity - 1)" />
+                        <Button icon="pi pi-minus" text rounded size="small" :disabled="slotProps.data.active === false" @click="updateCartQty(slotProps.data.id, slotProps.data.quantity - ($event.shiftKey ? 10 : 1))" title="Shift+Click to subtract 10" />
                         <InputNumber 
                           :modelValue="slotProps.data.quantity" 
                           :disabled="slotProps.data.active === false"
                           @update:modelValue="val => updateCartQty(slotProps.data.id, val)" 
                           class="qty-input"
                         />
-                        <Button icon="pi pi-plus" text rounded size="small" :disabled="slotProps.data.active === false" @click="updateCartQty(slotProps.data.id, slotProps.data.quantity + 1)" />
+                        <Button icon="pi pi-plus" text rounded size="small" :disabled="slotProps.data.active === false" @click="updateCartQty(slotProps.data.id, slotProps.data.quantity + ($event.shiftKey ? 10 : 1))" title="Shift+Click to add 10" />
                       </div>
                     </template>
                 </Column>
@@ -279,13 +319,13 @@ const preferenceOptions = [
                 <Column header="Quantity">
                     <template #body="slotProps">
                       <div style="display: flex; align-items: center; gap: 0.25rem; flex-wrap: nowrap;">
-                        <Button icon="pi pi-minus" text rounded size="small" @click="updateInventoryQty(slotProps.data.id, (inventory[slotProps.data.id] || 0) - 1)" />
+                        <Button icon="pi pi-minus" text rounded size="small" @click="updateInventoryQty(slotProps.data.id, (inventory[slotProps.data.id] || 0) - ($event.shiftKey ? 10 : 1))" title="Shift+Click to subtract 10" />
                         <InputNumber 
                           :modelValue="inventory[slotProps.data.id] || 0" 
                           @update:modelValue="val => updateInventoryQty(slotProps.data.id, val)" 
                           class="qty-input"
                         />
-                        <Button icon="pi pi-plus" text rounded size="small" @click="updateInventoryQty(slotProps.data.id, (inventory[slotProps.data.id] || 0) + 1)" />
+                        <Button icon="pi pi-plus" text rounded size="small" @click="updateInventoryQty(slotProps.data.id, (inventory[slotProps.data.id] || 0) + ($event.shiftKey ? 10 : 1))" title="Shift+Click to add 10" />
                         
                         <!-- Quota Info -->
                         <span 
@@ -367,7 +407,7 @@ const preferenceOptions = [
               </div>
               <div class="summary-section">
                 <h3>Required Base Resources</h3>
-                <BaseResourcesSummary :resources="mergedBaseResources" />
+                <BaseResourcesSummary :resources="mergedBaseResources" @resource-selected="handleResourceSelected" />
                 <div v-if="mergedBaseResources.length === 0" class="empty-state mt-3">
                   <i class="pi pi-check-circle" style="color: var(--p-primary-500); margin-right: 0.5rem;"></i>
                   You have everything you need in your inventory!
@@ -375,8 +415,17 @@ const preferenceOptions = [
 
                 <h3 class="mt-4"><i class="pi pi-cog" style="color: var(--p-primary-color)"></i> Items to Craft</h3>
                 <div v-if="itemsToCraft.length > 0" class="crafting-summary">
-                  <div v-for="item in itemsToCraft" :key="item.id" class="craft-item">
-                    <span class="craft-name">{{ item.name }}</span>
+                  <div 
+                    v-for="item in itemsToCraft" 
+                    :key="item.id" 
+                    class="craft-item clickable"
+                    @click="handleCraftedItem(item)"
+                    title="Click to add to inventory"
+                  >
+                    <div class="craft-item-left">
+                      <i class="pi pi-circle mr-2"></i>
+                      <span class="craft-name">{{ item.name }}</span>
+                    </div>
                     <span class="craft-qty">{{ item.quantity }}x</span>
                   </div>
                 </div>
@@ -392,7 +441,8 @@ const preferenceOptions = [
     
     <div v-else class="mt-5">
       <Message severity="info">
-        <span v-if="cart.length > 0">All items in the crafting list are deactivated. Activate items to see the combined supply chain.</span>
+        <span v-if="cart.length > 0 && activeCart.length === 0">All items in the crafting list are deactivated. Activate items to see the combined supply chain.</span>
+        <span v-else-if="cart.length > 0 && activeCart.length > 0">Error calculating supply chain. Please check console for details.</span>
         <span v-else>Add items to your crafting list to see the combined supply chain.</span>
       </Message>
     </div>
@@ -410,6 +460,23 @@ const preferenceOptions = [
         <div class="modal-footer">
           <Button label="Cancel" severity="secondary" @click="showClearConfirm = false" />
           <Button label="Clear All" severity="danger" @click="handleClearInventory" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Confirmation Modal for Marking Item as Completed -->
+    <div v-if="showCompleteConfirm && itemToComplete" class="modal-backdrop">
+      <div class="modal-content">
+        <div class="modal-header">
+          <i class="pi pi-exclamation-triangle warning-icon"></i>
+          <h3>Confirm Completion</h3>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to mark this item as completed? The item is going to be removed from the inventory.</p>
+        </div>
+        <div class="modal-footer">
+          <Button label="Cancel" severity="secondary" @click="showCompleteConfirm = false; itemToComplete = null" />
+          <Button label="Confirm" severity="success" @click="handleMarkAsCompleted" />
         </div>
       </div>
     </div>
@@ -596,6 +663,31 @@ h3 {
   border: 1px solid var(--p-surface-700);
   border-radius: var(--p-border-radius);
   font-size: 0.95rem;
+}
+
+.craft-item.clickable {
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.craft-item.clickable:hover {
+  background-color: var(--p-surface-700);
+  border-color: var(--p-primary-500);
+}
+
+.craft-item-left {
+  display: flex;
+  align-items: center;
+}
+
+.craft-item-left .pi {
+  color: var(--p-surface-400);
+  font-size: 1rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .craft-name {

@@ -85,7 +85,7 @@ export const useCraftingStore = defineStore('crafting', () => {
       {
         id: 'aluminum_alt',
         name: 'Aluminum Ore or Aluminum Nugget',
-        items: ['aluminum_ore', 'aluminum_nugget']
+        items: ['aluminium_ore', 'aluminium_nugget']
       }
     ]
 
@@ -154,11 +154,61 @@ export const useCraftingStore = defineStore('crafting', () => {
       accumulateCraftedItems(tree, accumulated)
     }
     
-    return Object.keys(accumulated).map(key => ({
-      id: key,
-      name: itemsData[key]?.name || key,
-      quantity: accumulated[key]
-    })).sort((a, b) => b.quantity - a.quantity)
+    // Sort nodes alphabetically by name initially for a stable order
+    const nodes = Object.keys(accumulated).sort((a, b) => {
+      const nameA = itemsData[a]?.name || a
+      const nameB = itemsData[b]?.name || b
+      return nameA.localeCompare(nameB)
+    })
+    
+    const visited = new Set<string>()
+    const temp = new Set<string>()
+    const sortedIds: string[] = []
+    
+    const visit = (id: string) => {
+      if (temp.has(id)) return // Circular dependency guard
+      if (visited.has(id)) return
+      
+      temp.add(id)
+      
+      const item = itemsData[id]
+      if (item && item.recipes) {
+        const inputs = new Set<string>()
+        for (const recipe of item.recipes) {
+          if (recipe.inputs) {
+            for (const inputId of Object.keys(recipe.inputs)) {
+              inputs.add(inputId)
+            }
+          }
+        }
+        
+        for (const inputId of inputs) {
+          if (accumulated[inputId] !== undefined) {
+            visit(inputId)
+          }
+        }
+      }
+      
+      temp.delete(id)
+      visited.add(id)
+      sortedIds.push(id)
+    }
+    
+    for (const id of nodes) {
+      visit(id)
+    }
+    
+    const activeList = []
+    
+    for (const key of sortedIds) {
+      activeList.push({
+        id: key,
+        name: itemsData[key]?.name || key,
+        quantity: accumulated[key]
+      })
+    }
+    
+    return activeList
   })
 
   const inventoryList = computed(() => {
@@ -167,7 +217,7 @@ export const useCraftingStore = defineStore('crafting', () => {
     let needed: Record<string, number> = {}
     if (activeCart.value.length > 0) {
       try {
-        const result = calculateCartPossibilities(activeCart.value, itemsData, {}, activePreference.value)
+        const result = calculateCartPossibilities(activeCart.value, itemsData, inventory.value, activePreference.value)
         const possibility = result[0]
         if (possibility && possibility.trees) {
           const collectNeeded = (node: any) => {
@@ -236,6 +286,11 @@ export const useCraftingStore = defineStore('crafting', () => {
         console.warn(`Item with ID "${itemId}" not found in database.`, selectedItem)
         return
       }
+
+      // Activate all items in the crafting list when adding a new recipe
+      cart.value.forEach(i => {
+        i.active = true
+      })
 
       const existing = cart.value.find(i => i.id === itemId)
       if (existing) {
@@ -323,6 +378,16 @@ export const useCraftingStore = defineStore('crafting', () => {
     inventory.value = {}
   }
 
+  const markCartItemCompleted = (id: string) => {
+    const item = cart.value.find(i => i.id === id)
+    if (item) {
+      const currentQty = inventory.value[item.id] || 0
+      const diff = currentQty - item.quantity
+      inventory.value[item.id] = (currentQty === 0 || diff < 0) ? 0 : diff
+      removeFromCart(item.id)
+    }
+  }
+
   return {
     cart,
     inventory,
@@ -348,6 +413,7 @@ export const useCraftingStore = defineStore('crafting', () => {
     addToInventory,
     removeFromInventory,
     updateInventoryQty,
-    clearInventory
+    clearInventory,
+    markCartItemCompleted
   }
 })

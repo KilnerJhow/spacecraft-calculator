@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import RecipeCalculator from './components/RecipeCalculator.vue'
 import RecipeDatabase from './components/RecipeDatabase.vue'
+import PriceCalculator from './components/PriceCalculator.vue'
+import ProfitAnalyzer from './components/ProfitAnalyzer.vue'
 
 const activeTab = ref('calculator')
 </script>
@@ -27,11 +29,27 @@ const activeTab = ref('calculator')
           <i class="pi pi-database nav-icon"></i>
           Recipe Database
         </button>
+        <button 
+          :class="['nav-btn', { active: activeTab === 'prices' }]"
+          @click="activeTab = 'prices'"
+        >
+          <i class="pi pi-tags nav-icon"></i>
+          Prices
+        </button>
+        <button 
+          :class="['nav-btn', { active: activeTab === 'analyzer' }]"
+          @click="activeTab = 'analyzer'"
+        >
+          <i class="pi pi-chart-line nav-icon"></i>
+          Value Analysis
+        </button>
       </div>
     </header>
     <main class="main-content">
       <RecipeCalculator v-show="activeTab === 'calculator'" />
       <RecipeDatabase v-show="activeTab === 'recipes'" />
+      <PriceCalculator v-show="activeTab === 'prices'" />
+      <ProfitAnalyzer v-show="activeTab === 'analyzer'" />
     </main>
   </div>
 </template>

@@ -1,45 +1,43 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed } from 'vue'
 import Checkbox from 'primevue/checkbox'
 
 const props = defineProps<{
   resources: any[]
 }>()
 
-// Track checked resource IDs
-const selectedResources = ref<string[]>([])
-
-// Clear checkboxes when the resource requirements change
-watch(() => props.resources, () => {
-  selectedResources.value = []
-}, { deep: true })
+const emit = defineEmits(['resource-selected'])
 
 const resourcesList = computed(() => props.resources)
+
+const selectResource = (res: any) => {
+  emit('resource-selected', res)
+}
 </script>
 
 <template>
   <div class="summary">
-    <p class="summary-desc">Check off the base resources as you gather them:</p>
-    <div v-for="res in resourcesList" :key="res.id" class="resource-item" :class="{'item-done': selectedResources.includes(res.id)}">
-      <div class="flex align-items-center gap-2">
-        <Checkbox v-model="selectedResources" :inputId="res.id" name="resource" :value="res.id" />
+    <p class="summary-desc">Click base resources as you gather them to add to inventory:</p>
+    <div v-for="res in resourcesList" :key="res.id" class="resource-item clickable" @click="!res.isAlternative ? selectResource(res) : null">
+      <div class="flex align-items-center gap-2 w-full">
+        <Checkbox v-if="!res.isAlternative" :modelValue="false" :inputId="res.id" name="resource" :value="res.id" style="pointer-events: none;" />
         
-        <div v-if="res.isAlternative" class="alternative-container" :class="{'is-done': selectedResources.includes(res.id)}">
-          <span v-if="res.optionA.quantity > 0" class="alt-option">
+        <div v-if="res.isAlternative" class="alternative-container w-full">
+          <div v-if="res.optionA.quantity > 0" class="alt-option-btn" @click.stop="selectResource(res.optionA)">
             <span class="alt-qty">{{ res.optionA.quantity }}</span> {{ res.optionA.name }}
-          </span>
+          </div>
           <span v-if="res.optionA.quantity > 0 && res.optionB.quantity > 0" class="alt-or">OR</span>
-          <span v-if="res.optionB.quantity > 0" class="alt-option">
+          <div v-if="res.optionB.quantity > 0" class="alt-option-btn" @click.stop="selectResource(res.optionB)">
             <span class="alt-qty">{{ res.optionB.quantity }}</span> {{ res.optionB.name }}
-          </span>
+          </div>
         </div>
         
-        <label v-else :for="res.id" class="res-name" :class="{'is-done': selectedResources.includes(res.id)}">
+        <label v-else :for="res.id" class="res-name flex-1" style="pointer-events: none;">
           {{ res.name }}
         </label>
       </div>
       
-      <span v-if="!res.isAlternative" class="res-qty" :class="{'is-done': selectedResources.includes(res.id)}">
+      <span v-if="!res.isAlternative" class="res-qty">
         {{ res.quantity }}
       </span>
     </div>
@@ -70,14 +68,13 @@ const resourcesList = computed(() => props.resources)
   transition: all 0.2s;
 }
 
-.resource-item:hover {
-  border-color: var(--p-primary-500);
+.resource-item.clickable {
+  cursor: pointer;
 }
 
-.resource-item.item-done {
-  opacity: 0.7;
-  background-color: var(--p-surface-900);
-  border-color: var(--p-surface-800);
+.resource-item:hover {
+  border-color: var(--p-primary-500);
+  background-color: var(--p-surface-700);
 }
 
 .flex {
@@ -92,39 +89,54 @@ const resourcesList = computed(() => props.resources)
   gap: 0.75rem;
 }
 
+.w-full {
+  width: 100%;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
 .res-name {
   color: var(--p-surface-100);
   font-weight: 500;
-  cursor: pointer;
-  transition: color 0.2s, text-decoration 0.2s;
 }
 
 .res-qty {
   color: var(--p-primary-400);
   font-weight: 700;
   font-size: 1.1rem;
-  transition: color 0.2s;
 }
 
 .alternative-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-.alt-option {
+.alt-option-btn {
+  background-color: var(--p-surface-900);
+  border: 1px solid var(--p-surface-600);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--p-border-radius);
   color: var(--p-surface-100);
   font-weight: 500;
   font-size: 0.95rem;
-  transition: color 0.2s, text-decoration 0.2s;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.alt-option-btn:hover {
+  border-color: var(--p-primary-500);
+  background-color: var(--p-surface-800);
 }
 
 .alt-qty {
   color: var(--p-primary-400);
   font-weight: 700;
   font-size: 1.1rem;
-  transition: color 0.2s;
 }
 
 .alt-or {
@@ -135,19 +147,5 @@ const resourcesList = computed(() => props.resources)
   background-color: var(--p-surface-700);
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
-}
-
-.is-done {
-  text-decoration: line-through;
-  color: var(--p-surface-500) !important;
-}
-
-.is-done .alt-qty {
-  color: var(--p-surface-500) !important;
-}
-
-.is-done .alt-option {
-  color: var(--p-surface-500) !important;
-  text-decoration: line-through;
 }
 </style>

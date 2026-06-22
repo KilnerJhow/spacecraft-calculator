@@ -9,6 +9,7 @@ export interface Item {
   isBase: boolean;
   recipes?: Recipe[];
   description?: string;
+  basePrice?: number;
 }
 
 export interface SupplyChainNode {

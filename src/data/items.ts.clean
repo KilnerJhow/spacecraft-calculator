@@ -13,8 +13,7 @@ export const itemsData: Record<string, Item> = {
           "copper_ingot": 1
         }
       }
-    ],
-    "weight": 0.5
+    ]
   },
   "copper_ingot": {
     "name": "Copper Ingot",
@@ -35,20 +34,17 @@ export const itemsData: Record<string, Item> = {
         }
       }
     ],
-    "basePrice": 8,
-    "weight": 1
+    "basePrice": 8
   },
   "copper_ore": {
     "name": "Copper Ore",
     "isBase": true,
-    "basePrice": 3,
-    "weight": 5
+    "basePrice": 3
   },
   "copper_nugget": {
     "name": "Copper Nugget",
     "isBase": true,
-    "basePrice": 1.6,
-    "weight": 1
+    "basePrice": 1.6
   },
   "iron_ingot": {
     "name": "Iron Ingot",
@@ -69,26 +65,22 @@ export const itemsData: Record<string, Item> = {
         }
       }
     ],
-    "basePrice": 5.8,
-    "weight": 1
+    "basePrice": 5.8
   },
   "iron_ore": {
     "name": "Iron Ore",
     "isBase": true,
-    "basePrice": 2.16,
-    "weight": 5
+    "basePrice": 2.16
   },
   "iron_nugget": {
     "name": "Iron Nugget",
     "isBase": true,
-    "basePrice": 1.14,
-    "weight": 1
+    "basePrice": 1.14
   },
   "quartz": {
     "name": "Quartz",
     "isBase": true,
-    "basePrice": 11,
-    "weight": 0.5
+    "basePrice": 11
   },
   "silicone_gel": {
     "name": "Silicone Gel",
@@ -102,8 +94,7 @@ export const itemsData: Record<string, Item> = {
         }
       }
     ],
-    "basePrice": 0.52,
-    "weight": 0.5
+    "basePrice": 0.52
   },
   "motor": {
     "name": "Motor",
@@ -119,8 +110,7 @@ export const itemsData: Record<string, Item> = {
         }
       }
     ],
-    "basePrice": 59,
-    "weight": 2
+    "basePrice": 59
   },
   "concrete": {
     "name": "Concrete",
@@ -134,14 +124,12 @@ export const itemsData: Record<string, Item> = {
         }
       }
     ],
-    "basePrice": 0.25,
-    "weight": 1
+    "basePrice": 0.25
   },
   "sulfur": {
     "name": "Sulfur",
     "isBase": true,
-    "basePrice": 0.7,
-    "weight": 0.1
+    "basePrice": 0.7
   },
   "solar_cell": {
     "name": "Solar Cell",
@@ -157,182 +145,152 @@ export const itemsData: Record<string, Item> = {
         }
       }
     ],
-    "basePrice": 6.2,
-    "weight": 0.5
+    "basePrice": 6.2
   },
   "calcite": {
     "name": "Calcite",
     "isBase": true,
-    "basePrice": 3.74,
-    "weight": 5
+    "basePrice": 3.74
   },
   "hematite": {
     "name": "Hematite",
     "isBase": true,
-    "basePrice": 7,
-    "weight": 0.5
+    "basePrice": 7
   },
   "carbon": {
     "name": "a-Carbon",
     "isBase": true,
-    "basePrice": 1.5,
-    "weight": 1
+    "basePrice": 1.5
   },
   "graphite_crystal": {
     "name": "Graphite Crystal",
     "isBase": true,
-    "basePrice": 9,
-    "weight": 0.5
+    "basePrice": 9
   },
   "diamond": {
     "name": "Diamond",
     "isBase": true,
-    "basePrice": 400,
-    "weight": 0.5
+    "basePrice": 400
   },
   "azurite_stone": {
     "name": "Azurite Stone",
     "isBase": true,
-    "basePrice": 45,
-    "weight": 0.5
+    "basePrice": 45
   },
   "malachite_stone": {
     "name": "Malachite Stone",
     "isBase": true,
-    "basePrice": 40,
-    "weight": 0.5
+    "basePrice": 40
   },
   "zirconium_ore": {
     "name": "Zirconium Ore",
     "isBase": true,
-    "basePrice": 10.5,
-    "weight": 5
+    "basePrice": 10.5
   },
   "zirconium_nugget": {
     "name": "Zirconium Nugget",
     "isBase": true,
-    "basePrice": 5.6,
-    "weight": 1
+    "basePrice": 5.6
   },
   "sandstone": {
     "name": "Silicate",
     "isBase": true,
-    "basePrice": 0.62,
-    "weight": 5
+    "basePrice": 0.62
   },
   "kaolinite": {
     "name": "Kaolinite",
     "isBase": true,
-    "basePrice": 5,
-    "weight": 1
+    "basePrice": 5
   },
   "quartz_shavings": {
     "name": "Quartz Powder",
     "isBase": true,
-    "basePrice": 0.37,
-    "weight": 0.1
+    "basePrice": 0.37
   },
   "titanium_ore": {
     "name": "Titanium Ore",
     "isBase": true,
-    "basePrice": 3.36,
-    "weight": 5
+    "basePrice": 3.36
   },
   "titanium_nugget": {
     "name": "Titanium Nugget",
     "isBase": true,
-    "basePrice": 1.8,
-    "weight": 1
+    "basePrice": 1.8
   },
   "aluminium_ore": {
     "name": "Aluminum Ore",
     "isBase": true,
-    "basePrice": 3.58,
-    "weight": 5
+    "basePrice": 3.58
   },
   "aluminium_nugget": {
     "name": "Aluminum Nugget",
     "isBase": true,
-    "basePrice": 1.92,
-    "weight": 1
+    "basePrice": 1.92
   },
   "turquoise": {
     "name": "Turquoise",
     "isBase": true,
-    "basePrice": 15,
-    "weight": 1
+    "basePrice": 15
   },
   "aquamarine": {
     "name": "Aquamarine",
     "isBase": true,
-    "basePrice": 12,
-    "weight": 0.5
+    "basePrice": 12
   },
   "emerald": {
     "name": "Emerald",
     "isBase": true,
-    "basePrice": 130,
-    "weight": 0.5
+    "basePrice": 130
   },
   "pyrite": {
     "name": "Pyrite",
     "isBase": true,
-    "basePrice": 10,
-    "weight": 0.5
+    "basePrice": 10
   },
   "cinnabar": {
     "name": "Cinnabar",
     "isBase": true,
-    "basePrice": 21.4,
-    "weight": 1
+    "basePrice": 21.4
   },
   "vanadium_ore": {
     "name": "Vanadium Ore",
     "isBase": true,
-    "basePrice": 5.6,
-    "weight": 5
+    "basePrice": 5.6
   },
   "silver_nugget": {
     "name": "Silver Nugget",
     "isBase": true,
-    "basePrice": 4,
-    "weight": 1
+    "basePrice": 4
   },
   "platinum_ore": {
     "name": "Platinum Ore",
     "isBase": true,
-    "basePrice": 6,
-    "weight": 5
+    "basePrice": 6
   },
   "platinum_nugget": {
     "name": "Platinum Nugget",
     "isBase": true,
-    "basePrice": 3.2,
-    "weight": 1
+    "basePrice": 3.2
   },
   "tungsten_ore": {
     "name": "Tungsten Ore",
     "isBase": true,
-    "basePrice": 6,
-    "weight": 5
+    "basePrice": 6
   },
   "tungsten_nugget": {
     "name": "Tungsten Nugget",
     "isBase": true,
-    "basePrice": 3.2,
-    "weight": 1
+    "basePrice": 3.2
   },
   "uranium_nugget": {
     "name": "Uranium Nugget",
     "isBase": true,
-    "basePrice": 1,
-    "weight": 1
+    "basePrice": 1
   },
   "elmerium_nugget": {
     "name": "Elmerium Nugget",
     "isBase": true,
-    "basePrice": 5.3,
-    "weight": 1
+    "basePrice": 5.3
   },
   "elmerium_shavings": {
     "name": "Elmerium Dust",
@@ -346,44 +304,37 @@ export const itemsData: Record<string, Item> = {
           "rockwood_dreamwood_fruit": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "low_crystal": {
     "name": "Cloudy Gemstone",
     "isBase": true,
-    "basePrice": 3,
-    "weight": 0.1
+    "basePrice": 3
   },
   "crystal": {
     "name": "Fair Gemstone",
     "isBase": true,
-    "basePrice": 10,
-    "weight": 0.1
+    "basePrice": 10
   },
   "big_crystal": {
     "name": "Beautiful Gemstone",
     "isBase": true,
-    "basePrice": 35,
-    "weight": 0.1
+    "basePrice": 35
   },
   "hudge_crystal": {
     "name": "Marvelous Gemstone",
     "isBase": true,
-    "basePrice": 100,
-    "weight": 0.1
+    "basePrice": 100
   },
   "turquoise_bead": {
     "name": "Turquoise Bead",
     "isBase": true,
-    "basePrice": 5,
-    "weight": 0.1
+    "basePrice": 5
   },
   "calcified_invariant": {
     "name": "Calcified Invariant",
     "isBase": true,
-    "basePrice": 100,
-    "weight": 2
+    "basePrice": 100
   },
   "space_wheat_seed": {
     "name": "Spacekorn Seed",
@@ -396,52 +347,43 @@ export const itemsData: Record<string, Item> = {
           "space_wheat_wooly_korn": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "space_wheat_plain_pulp": {
     "name": "Plain Pulp",
     "isBase": true,
-    "basePrice": 4,
-    "weight": 1
+    "basePrice": 4
   },
   "space_wheat_sour_pulp": {
     "name": "Sour Pulp",
     "isBase": true,
-    "basePrice": 12,
-    "weight": 1
+    "basePrice": 12
   },
   "space_wheat_wooly_korn": {
     "name": "Wooly Korn",
-    "isBase": true,
-    "weight": 0.1
+    "isBase": true
   },
   "space_wheat_frost_pulp": {
     "name": "Frost Pulp",
     "isBase": true,
-    "basePrice": 7.6,
-    "weight": 1
+    "basePrice": 7.6
   },
   "rockwood_seed": {
     "name": "Rockwood Nut",
-    "isBase": true,
-    "weight": 0.1
+    "isBase": true
   },
   "rockwood_dreamwood_fruit": {
     "name": "Dream Sporule",
     "isBase": true,
-    "basePrice": 5.5,
-    "weight": 0.1
+    "basePrice": 5.5
   },
   "rockwood_glowwood_fruit": {
     "name": "Glowing Nodule",
-    "isBase": true,
-    "weight": 0.1
+    "isBase": true
   },
   "rockwood_glowwood_bark": {
     "name": "Rough Bark",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "water": {
     "name": "Water",
@@ -455,20 +397,17 @@ export const itemsData: Record<string, Item> = {
           "water_brine": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "water_brine": {
     "name": "Brine Water",
     "isBase": true,
-    "basePrice": 0.3,
-    "weight": 1
+    "basePrice": 0.3
   },
   "water_waste": {
     "name": "Polluted Water",
     "isBase": true,
-    "basePrice": 0.2,
-    "weight": 1
+    "basePrice": 0.2
   },
   "ethanol": {
     "name": "Ethanol",
@@ -482,8 +421,7 @@ export const itemsData: Record<string, Item> = {
           "space_wheat_sour_pulp": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "xenic_oil": {
     "name": "Xenic Oil",
@@ -497,8 +435,7 @@ export const itemsData: Record<string, Item> = {
           "space_wheat_seed": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "thermal_paste": {
     "name": "Thermal Paste",
@@ -513,8 +450,7 @@ export const itemsData: Record<string, Item> = {
           "water": 5
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "mercury": {
     "name": "Mercury",
@@ -528,8 +464,7 @@ export const itemsData: Record<string, Item> = {
           "water_brine": 40
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "vitriol": {
     "name": "Sulphuric Acid",
@@ -544,24 +479,20 @@ export const itemsData: Record<string, Item> = {
           "sulfur": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "helium": {
     "name": "Helium",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "radon": {
     "name": "Radon",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "ftoi_l": {
     "name": "Mag-Plasma",
     "isBase": true,
-    "basePrice": 0.2,
-    "weight": 1
+    "basePrice": 0.2
   },
   "bottle_empty": {
     "name": "Stainless Bottle",
@@ -576,8 +507,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 4
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "bottle_water": {
     "name": "Water Bottle",
@@ -592,8 +522,7 @@ export const itemsData: Record<string, Item> = {
           "water": 10
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "bottle_water_brine": {
     "name": "Brine Water Bottle",
@@ -608,8 +537,7 @@ export const itemsData: Record<string, Item> = {
           "water_brine": 10
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "bottle_ethanol": {
     "name": "Ethanol Bottle",
@@ -624,8 +552,7 @@ export const itemsData: Record<string, Item> = {
           "ethanol": 10
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "bottle_xenic_oil": {
     "name": "Xenic Oil Bottle",
@@ -640,8 +567,7 @@ export const itemsData: Record<string, Item> = {
           "xenic_oil": 10
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "bottle_thermal_paste": {
     "name": "Thermal Paste Bottle",
@@ -656,8 +582,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_paste": 10
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "bottle_vitriol": {
     "name": "Sulphuric Acid Bottle",
@@ -672,8 +597,7 @@ export const itemsData: Record<string, Item> = {
           "vitriol": 10
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "bottle_mercury": {
     "name": "Mercury Bottle",
@@ -688,8 +612,7 @@ export const itemsData: Record<string, Item> = {
           "mercury": 10
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "bottle_plasma_empty": {
     "name": "Confinement Bottle",
@@ -704,14 +627,12 @@ export const itemsData: Record<string, Item> = {
           "magnetic_chamber": 1
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "bottle_plasma_ftoi_l": {
     "name": "Mag-Plasma Bottle",
     "isBase": true,
-    "basePrice": 397,
-    "weight": 25
+    "basePrice": 397
   },
   "graphene": {
     "name": "Graphene",
@@ -725,8 +646,7 @@ export const itemsData: Record<string, Item> = {
           "graphite_crystal": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "zirconium_ingot": {
     "name": "Zirconium Ingot",
@@ -740,8 +660,7 @@ export const itemsData: Record<string, Item> = {
           "zirconium_ore": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "titanium_ingot": {
     "name": "Titanium Ingot",
@@ -755,8 +674,7 @@ export const itemsData: Record<string, Item> = {
           "titanium_ore": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "silicium_ingot": {
     "name": "Silicon Ingot",
@@ -777,8 +695,7 @@ export const itemsData: Record<string, Item> = {
           "quartz": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "aluminium_ingot": {
     "name": "Aluminum Ingot",
@@ -799,8 +716,7 @@ export const itemsData: Record<string, Item> = {
           "aluminium_nugget": 4
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "vanadium_ingot": {
     "name": "Vanadium Ingot",
@@ -814,8 +730,7 @@ export const itemsData: Record<string, Item> = {
           "vanadium_ore": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "silver_ingot": {
     "name": "Silver Ingot",
@@ -829,8 +744,7 @@ export const itemsData: Record<string, Item> = {
           "silver_nugget": 4
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "platinum_ingot": {
     "name": "Platinum Ingot",
@@ -844,8 +758,7 @@ export const itemsData: Record<string, Item> = {
           "platinum_ore": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "tungsten_ingot": {
     "name": "Tungsten Ingot",
@@ -859,8 +772,7 @@ export const itemsData: Record<string, Item> = {
           "tungsten_ore": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "steel": {
     "name": "Steel Ingot",
@@ -875,8 +787,7 @@ export const itemsData: Record<string, Item> = {
           "carbon": 4
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "alu_k": {
     "name": "Alu-K Ingot",
@@ -891,8 +802,7 @@ export const itemsData: Record<string, Item> = {
           "kaolinite": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "btitanium": {
     "name": "B-Titanium Ingot",
@@ -907,8 +817,7 @@ export const itemsData: Record<string, Item> = {
           "vanadium_ingot": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "levinium": {
     "name": "Levinium Ingot",
@@ -924,8 +833,7 @@ export const itemsData: Record<string, Item> = {
           "titanium_ingot": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "unbendinium": {
     "name": "Unbendinium Ingot",
@@ -941,8 +849,7 @@ export const itemsData: Record<string, Item> = {
           "silicium_ingot": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "elmerium": {
     "name": "Elmerium Core",
@@ -956,8 +863,7 @@ export const itemsData: Record<string, Item> = {
           "elmerium_nugget": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "pipe_1": {
     "name": "Watertight Pipe",
@@ -971,14 +877,12 @@ export const itemsData: Record<string, Item> = {
           "copper_ingot": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "pipe_2": {
     "name": "Pressure-tight Pipe",
     "isBase": true,
-    "basePrice": 12.9,
-    "weight": 1
+    "basePrice": 12.9
   },
   "coil": {
     "name": "Magnetic Coil",
@@ -994,8 +898,7 @@ export const itemsData: Record<string, Item> = {
           "metal_bolt": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "pump": {
     "name": "Pump",
@@ -1011,8 +914,7 @@ export const itemsData: Record<string, Item> = {
           "metal_sheet_2": 3
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "actuator": {
     "name": "Hydraulic Actuator",
@@ -1028,8 +930,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 3
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "elmerium_engine": {
     "name": "Elmerium Engine",
@@ -1045,8 +946,7 @@ export const itemsData: Record<string, Item> = {
           "elmerium": 2
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "focuser": {
     "name": "Crystalline Focuser",
@@ -1061,8 +961,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 5
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "focuser_2": {
     "name": "Hyper Lens",
@@ -1080,8 +979,7 @@ export const itemsData: Record<string, Item> = {
           "crystal_lattice_c": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "focuser_3": {
     "name": "Ciliary Lens",
@@ -1097,8 +995,7 @@ export const itemsData: Record<string, Item> = {
           "graphene": 150
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "graphenoid": {
     "name": "Quantic Graphenoid",
@@ -1115,8 +1012,7 @@ export const itemsData: Record<string, Item> = {
           "crystal_lattice_c": 50
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "alternator": {
     "name": "Hall Alternator",
@@ -1132,8 +1028,7 @@ export const itemsData: Record<string, Item> = {
           "metal_sheet_1": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "grating": {
     "name": "Diffraction Grating",
@@ -1148,8 +1043,7 @@ export const itemsData: Record<string, Item> = {
           "aluminium_ingot": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "magnetic_chamber": {
     "name": "Confinement Chamber",
@@ -1164,8 +1058,7 @@ export const itemsData: Record<string, Item> = {
           "mag_sheet": 15
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "metal_bolt": {
     "name": "Nut and Bolt",
@@ -1179,8 +1072,7 @@ export const itemsData: Record<string, Item> = {
           "iron_ingot": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "metal_sheet_1": {
     "name": "Metal Sheet",
@@ -1201,8 +1093,7 @@ export const itemsData: Record<string, Item> = {
           "iron_ingot": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "metal_sheet_2": {
     "name": "Strong Metal Sheet",
@@ -1217,8 +1108,7 @@ export const itemsData: Record<string, Item> = {
           "iron_ingot": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "metal_sheet_3": {
     "name": "High-Grade Metal Sheet",
@@ -1233,8 +1123,7 @@ export const itemsData: Record<string, Item> = {
           "iron_ingot": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "mag_sheet": {
     "name": "Monomagnetic Sheet",
@@ -1250,8 +1139,7 @@ export const itemsData: Record<string, Item> = {
           "elmerium": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "thermal_sheet": {
     "name": "Thermal Sheet",
@@ -1265,8 +1153,7 @@ export const itemsData: Record<string, Item> = {
           "alu_k": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "plate_1": {
     "name": "Stainless Plate",
@@ -1289,8 +1176,7 @@ export const itemsData: Record<string, Item> = {
           "aluminium_ingot": 2
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "plate_2": {
     "name": "Inert Plate",
@@ -1304,8 +1190,7 @@ export const itemsData: Record<string, Item> = {
           "btitanium": 2
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "plate_light": {
     "name": "Very Light Plate",
@@ -1319,8 +1204,7 @@ export const itemsData: Record<string, Item> = {
           "levinium": 2
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "beam_1": {
     "name": "Structural Beam",
@@ -1334,8 +1218,7 @@ export const itemsData: Record<string, Item> = {
           "steel": 2
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "beam_2": {
     "name": "Heavy-Duty Beam",
@@ -1350,8 +1233,7 @@ export const itemsData: Record<string, Item> = {
           "steel": 1
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "beam_3": {
     "name": "Unbending Beam",
@@ -1366,8 +1248,7 @@ export const itemsData: Record<string, Item> = {
           "steel": 2
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "semiconductor": {
     "name": "Semiconductor Substrate",
@@ -1381,8 +1262,7 @@ export const itemsData: Record<string, Item> = {
           "silicium_ingot": 1
         }
       }
-    ],
-    "weight": 0.5
+    ]
   },
   "micro_chip": {
     "name": "Microchip",
@@ -1396,8 +1276,7 @@ export const itemsData: Record<string, Item> = {
           "semiconductor": 1
         }
       }
-    ],
-    "weight": 0.5
+    ]
   },
   "gunpowder": {
     "name": "Solid Explosive",
@@ -1420,14 +1299,12 @@ export const itemsData: Record<string, Item> = {
           "carbon": 2
         }
       }
-    ],
-    "weight": 0.5
+    ]
   },
   "alu_powder": {
     "name": "Aluminum Powder",
     "isBase": true,
-    "basePrice": 0.5,
-    "weight": 0.1
+    "basePrice": 0.5
   },
   "fertilizer_neutral": {
     "name": "Neutral Fertilizer",
@@ -1442,8 +1319,7 @@ export const itemsData: Record<string, Item> = {
           "lime": 10
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "fertilizer_acidic": {
     "name": "Acidic Fertilizer",
@@ -1458,8 +1334,7 @@ export const itemsData: Record<string, Item> = {
           "protein": 10
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "fertilizer_carbonic": {
     "name": "Carbonic Fertilizer",
@@ -1475,8 +1350,7 @@ export const itemsData: Record<string, Item> = {
           "protein": 10
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "fertilizer_metallic": {
     "name": "Metallic Fertilizer",
@@ -1492,8 +1366,7 @@ export const itemsData: Record<string, Item> = {
           "aluminium_ingot": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "activated_coal": {
     "name": "Activated Charcoal",
@@ -1508,8 +1381,7 @@ export const itemsData: Record<string, Item> = {
           "carbon": 1
         }
       }
-    ],
-    "weight": 0.5
+    ]
   },
   "carbonic_fuel": {
     "name": "Carbonic Superfuel",
@@ -1524,8 +1396,7 @@ export const itemsData: Record<string, Item> = {
           "water": 10
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "battery": {
     "name": "Chemical Battery",
@@ -1542,8 +1413,7 @@ export const itemsData: Record<string, Item> = {
           "vanadium_ingot": 1
         }
       }
-    ],
-    "weight": 2
+    ]
   },
   "thermal_isolant": {
     "name": "Thermal Wool",
@@ -1557,20 +1427,17 @@ export const itemsData: Record<string, Item> = {
           "kaolinite": 1
         }
       }
-    ],
-    "weight": 0.5
+    ]
   },
   "antimatter_empty": {
     "name": "Antimatter Core (empty)",
     "isBase": true,
-    "basePrice": 19.7,
-    "weight": 2
+    "basePrice": 19.7
   },
   "antimatter_full": {
     "name": "Antimatter Core (full)",
     "isBase": true,
-    "basePrice": 20.4,
-    "weight": 2
+    "basePrice": 20.4
   },
   "missile_airframe_small": {
     "name": "Small Missile Airframe",
@@ -1586,8 +1453,7 @@ export const itemsData: Record<string, Item> = {
           "gunpowder": 2
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "protein": {
     "name": "Xenic Protein",
@@ -1601,8 +1467,7 @@ export const itemsData: Record<string, Item> = {
           "space_wheat_plain_pulp": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "lime": {
     "name": "Lime",
@@ -1616,8 +1481,7 @@ export const itemsData: Record<string, Item> = {
           "calcite": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "crystal_lattice_m": {
     "name": "m-Crystal Matrix",
@@ -1638,8 +1502,7 @@ export const itemsData: Record<string, Item> = {
           "malachite_stone": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "crystal_lattice_h": {
     "name": "h-Crystal Matrix",
@@ -1653,8 +1516,7 @@ export const itemsData: Record<string, Item> = {
           "aquamarine": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "crystal_lattice_c": {
     "name": "c-Crystal Matrix",
@@ -1668,50 +1530,42 @@ export const itemsData: Record<string, Item> = {
           "diamond": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "steel_scraps": {
     "name": "Steel Scraps",
     "isBase": true,
-    "basePrice": 7.8,
-    "weight": 5
+    "basePrice": 7.8
   },
   "alu_scraps": {
     "name": "Aluminum Scraps",
     "isBase": true,
-    "basePrice": 7.2,
-    "weight": 5
+    "basePrice": 7.2
   },
   "iron_scraps": {
     "name": "Iron Scraps",
     "isBase": true,
-    "basePrice": 4.34,
-    "weight": 5
+    "basePrice": 4.34
   },
   "titanium_scraps": {
     "name": "Titanium Scraps",
     "isBase": true,
-    "basePrice": 6.7,
-    "weight": 5
+    "basePrice": 6.7
   },
   "building_scraps": {
     "name": "Industrial Rubble",
     "isBase": true,
-    "basePrice": 5.3,
-    "weight": 5
+    "basePrice": 5.3
   },
   "system_scraps": {
     "name": "Huge Electronics Scraps",
     "isBase": true,
-    "basePrice": 8.1,
-    "weight": 5
+    "basePrice": 8.1
   },
   "steel_hull_scraps": {
     "name": "Wrecked Hull",
     "isBase": true,
-    "basePrice": 7.8,
-    "weight": 5
+    "basePrice": 7.8
   },
   "module_casing_1": {
     "name": "Small Module Kit",
@@ -1726,8 +1580,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 10
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "module_casing_2": {
     "name": "Module Kit",
@@ -1743,8 +1596,7 @@ export const itemsData: Record<string, Item> = {
           "metal_sheet_2": 20
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "module_casing_3": {
     "name": "Large Module Kit",
@@ -1760,8 +1612,7 @@ export const itemsData: Record<string, Item> = {
           "metal_sheet_3": 40
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "support_casing": {
     "name": "Support Hardware",
@@ -1776,8 +1627,7 @@ export const itemsData: Record<string, Item> = {
           "micro_chip": 1
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "steel_casing_mk_1": {
     "name": "Small Steel Part Casing",
@@ -1792,8 +1642,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 4
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "titanium_casing_mk_1": {
     "name": "Small Titanium Part Casing",
@@ -1808,8 +1657,7 @@ export const itemsData: Record<string, Item> = {
           "plate_2": 4
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "titanium_casing_mk_2": {
     "name": "Titanium Part Casing",
@@ -1824,8 +1672,7 @@ export const itemsData: Record<string, Item> = {
           "beam_2": 12
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "platinum_casing_mk_1": {
     "name": "Small Solid Frame Casing",
@@ -1840,8 +1687,7 @@ export const itemsData: Record<string, Item> = {
           "plate_2": 4
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "platinum_casing_mk_2": {
     "name": "Solid Frame Casing",
@@ -1856,8 +1702,7 @@ export const itemsData: Record<string, Item> = {
           "beam_3": 12
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "levinium_casing_mk_1": {
     "name": "Small Levinium Part Casing",
@@ -1872,13 +1717,11 @@ export const itemsData: Record<string, Item> = {
           "plate_light": 15
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "alloy_xcasing_mk_1": {
     "name": "Small Alloy X Part Casing",
-    "isBase": true,
-    "weight": 10
+    "isBase": true
   },
   "alloy_xcasing_mk_2": {
     "name": "Alloy X Part Casing",
@@ -1891,8 +1734,7 @@ export const itemsData: Record<string, Item> = {
           "alloy_xcasing_mk_1": 2
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "control_base_kit": {
     "name": "Base Deploy Kit",
@@ -1910,14 +1752,12 @@ export const itemsData: Record<string, Item> = {
           "concrete": 20
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "control_base_core": {
     "name": "Base Core Drive",
     "isBase": true,
-    "basePrice": 100,
-    "weight": 5
+    "basePrice": 100
   },
   "hull_mk_1_004": {
     "name": "Steel 4x3x1",
@@ -1932,8 +1772,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 2
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "wing_01": {
     "name": "\"Nimbus\" Spoiler",
@@ -1948,8 +1787,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 1
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "wing_02": {
     "name": "\"Catfin\" Spoiler",
@@ -1964,8 +1802,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 1
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "wing_03": {
     "name": "\"Warden\" Wing",
@@ -1980,8 +1817,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 1
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "hull_mk_1_005": {
     "name": "Steel 6x3x1",
@@ -1996,8 +1832,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 3
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_006": {
     "name": "Steel 8x3x1",
@@ -2012,8 +1847,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 4
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_001": {
     "name": "Steel 4x3x2",
@@ -2028,8 +1862,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 4
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_002": {
     "name": "Steel 6x3x2",
@@ -2044,8 +1877,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 6
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_003": {
     "name": "Steel 8x3x2",
@@ -2060,8 +1892,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 8
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_004_steel_alu_k": {
     "name": "Thermal Steel 4x3x1",
@@ -2076,8 +1907,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 4
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "wing_01_steel_alu_k": {
     "name": "Thermal \"Nimbus\" Spoiler",
@@ -2092,8 +1922,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 1
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "wing_02_steel_alu_k": {
     "name": "Thermal \"Catfin\" Spoiler",
@@ -2108,8 +1937,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 1
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "wing_03_steel_alu_k": {
     "name": "Thermal \"Warden\" Spoiler",
@@ -2124,8 +1952,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 2
         }
       }
-    ],
-    "weight": 5
+    ]
   },
   "hull_mk_1_005_steel_alu_k": {
     "name": "Thermal Steel 6x3x1",
@@ -2140,8 +1967,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 6
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_006_steel_alu_k": {
     "name": "Thermal Steel 8x3x1",
@@ -2156,8 +1982,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 8
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_001_steel_alu_k": {
     "name": "Thermal Steel 4x3x2",
@@ -2172,8 +1997,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 6
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_002_steel_alu_k": {
     "name": "Thermal Steel 6x3x2",
@@ -2188,8 +2012,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 9
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_003_steel_alu_k": {
     "name": "Thermal Steel 8x3x2",
@@ -2204,8 +2027,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 12
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_004_tit": {
     "name": "Titanium 4x3x1",
@@ -2220,8 +2042,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 2
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_005_tit": {
     "name": "Titanium 6x3x1",
@@ -2236,8 +2057,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 3
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_006_tit": {
     "name": "Titanium 8x3x1",
@@ -2252,8 +2072,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 4
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_001_tit": {
     "name": "Titanium 4x3x2",
@@ -2268,8 +2087,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 4
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_002_tit": {
     "name": "Titanium 6x3x2",
@@ -2284,8 +2102,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 6
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_003_tit": {
     "name": "Titanium 8x3x2",
@@ -2300,8 +2117,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 8
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_2_004_tit": {
     "name": "Titanium 8x6x2",
@@ -2316,8 +2132,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 8
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "wing_04": {
     "name": "\"Condor\" Wing",
@@ -2332,8 +2147,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 8
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "hull_mk_2_005_tit": {
     "name": "Titanium 12x6x2",
@@ -2348,8 +2162,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 12
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "hull_mk_2_006_tit": {
     "name": "Titanium 16x6x2",
@@ -2364,8 +2177,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 16
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "hull_mk_1_004_tit_alu_k": {
     "name": "Thermal Titanium 4x3x1",
@@ -2380,8 +2192,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 4
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_005_tit_alu_k": {
     "name": "Thermal Titanium 6x3x1",
@@ -2396,8 +2207,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 6
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_006_tit_alu_k": {
     "name": "Thermal Titanium 8x3x1",
@@ -2412,8 +2222,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 8
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_001_tit_alu_k": {
     "name": "Thermal Titanium 4x3x2",
@@ -2428,8 +2237,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 6
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_002_tit_alu_k": {
     "name": "Thermal Titanium 6x3x2",
@@ -2444,8 +2252,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 9
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_003_tit_alu_k": {
     "name": "Thermal Titanium 8x3x2",
@@ -2460,8 +2267,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 12
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_2_004_tit_alu_k": {
     "name": "Thermal Titanium 8x6x2",
@@ -2476,8 +2282,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 16
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "wing_04_tit_alu_k": {
     "name": "Thermal \"Condor\" Wing",
@@ -2492,8 +2297,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 16
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "hull_mk_2_005_tit_alu_k": {
     "name": "Thermal Titanium 12x6x2",
@@ -2508,8 +2312,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 24
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "hull_mk_2_006_tit_alu_k": {
     "name": "Thermal Titanium 16x6x2",
@@ -2524,53 +2327,43 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 32
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "hull_mk_1_001_pla": {
     "name": "Platinium 4x3x2 [DEPRECATED BUT STILL USED IN SHIPWRECK]",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "hull_mk_1_002_pla": {
     "name": "Platinium 6x3x2 [DEPRECATED BUT STILL USED IN SHIPWRECK]",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "hull_mk_1_003_pla": {
     "name": "Platinium 8x3x2 [DEPRECATED BUT STILL USED IN SHIPWRECK]",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "hull_mk_2_001_pla": {
     "name": "Platinium 8x6x4 [DEPRECATED BUT STILL USED IN SHIPWRECK]",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "hull_mk_2_002_pla": {
     "name": "Platinium 12x6x4 [DEPRECATED BUT STILL USED IN SHIPWRECK]",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "hull_mk_2_003_pla": {
     "name": "Platinium 16x6x4 [DEPRECATED BUT STILL USED IN SHIPWRECK]",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "hull_mk_1_006_lev": {
     "name": "Levinium 8x3x1[DEPRECATED BUT STILL USED IN SHIPWRECK]",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "hull_mk_1_005_lev": {
     "name": "Levinium 6x3x1[DEPRECATED BUT STILL USED IN SHIPWRECK]",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "hull_mk_1_004_lev": {
     "name": "Levinium 4x3x1 [DEPRECATED BUT STILL USED IN SHIPWRECK]",
-    "isBase": true,
-    "weight": 20
+    "isBase": true
   },
   "hull_mk_1_001_lev": {
     "name": "Levinium 4x3x2",
@@ -2585,8 +2378,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 4
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_002_lev": {
     "name": "Levinium 6x3x2",
@@ -2601,8 +2393,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 6
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_003_lev": {
     "name": "Levinium 8x3x2",
@@ -2617,8 +2408,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 8
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_004_plat": {
     "name": "Solid Frame 4x3x1",
@@ -2632,8 +2422,7 @@ export const itemsData: Record<string, Item> = {
           "platinum_casing_mk_1": 4
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_005_plat": {
     "name": "Solid Frame 6x3x1",
@@ -2647,8 +2436,7 @@ export const itemsData: Record<string, Item> = {
           "platinum_casing_mk_1": 6
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_1_006_plat": {
     "name": "Solid Frame 8x3x1",
@@ -2662,8 +2450,7 @@ export const itemsData: Record<string, Item> = {
           "platinum_casing_mk_1": 8
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "hull_mk_2_004_plat": {
     "name": "Solid Frame 8x6x2",
@@ -2677,8 +2464,7 @@ export const itemsData: Record<string, Item> = {
           "platinum_casing_mk_2": 4
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "hull_mk_2_005_plat": {
     "name": "Solid Frame 12x6x2",
@@ -2692,8 +2478,7 @@ export const itemsData: Record<string, Item> = {
           "platinum_casing_mk_2": 6
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "hull_mk_2_006_plat": {
     "name": "Solid Frame 16x6x2",
@@ -2707,8 +2492,7 @@ export const itemsData: Record<string, Item> = {
           "platinum_casing_mk_2": 8
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "hull_mk_1_004_ax": {
     "name": "Alloy X 4x3x1",
@@ -2723,8 +2507,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hull_mk_1_005_ax": {
     "name": "Alloy X 6x3x1",
@@ -2739,8 +2522,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hull_mk_1_006_ax": {
     "name": "Alloy X 8x3x1",
@@ -2755,8 +2537,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 4
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hull_mk_1_001_ax": {
     "name": "Alloy X 4x3x2",
@@ -2771,8 +2552,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 4
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hull_mk_1_002_ax": {
     "name": "Alloy X 6x3x2",
@@ -2787,8 +2567,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 6
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hull_mk_1_003_ax": {
     "name": "Alloy X 8x3x2",
@@ -2803,8 +2582,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 8
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hull_mk_2_004_ax": {
     "name": "Alloy X 8x6x2",
@@ -2819,8 +2597,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 8
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hull_mk_2_005_ax": {
     "name": "Alloy X 12x6x2",
@@ -2835,13 +2612,11 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 12
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hull_mk_2_006_ax_1": {
     "name": "Alloy X 12x6x4",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "hull_mk_2_007_ax": {
     "name": "Alloy X 16x6x2",
@@ -2856,13 +2631,11 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 16
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hull_mk_2_008_ax_1": {
     "name": "Alloy X 16x6x4",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "cockpit_lr_1": {
     "name": "LR \"Interceptor\" Cockpit",
@@ -2877,8 +2650,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 6
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "cockpit_lr_2": {
     "name": "LR \"Raptor\" Cockpit",
@@ -2893,8 +2665,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 32
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "cockpit_lr_3": {
     "name": "LR \"Marauder\" Deck",
@@ -2909,8 +2680,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 32
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "cockpit_ae_1": {
     "name": "\"Pathfinder\" Cockpit",
@@ -2927,8 +2697,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 8
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "cockpit_ae_2": {
     "name": "\"Wanderback\" Cockpit",
@@ -2946,8 +2715,7 @@ export const itemsData: Record<string, Item> = {
           "grating": 50
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "cockpit_ae_3": {
     "name": "AE \"Skygazer\" Deck",
@@ -2962,8 +2730,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 32
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "cockpit_tc_1": {
     "name": "\"Brick\" Cockpit",
@@ -2979,8 +2746,7 @@ export const itemsData: Record<string, Item> = {
           "motor": 2
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "cockpit_mk_1": {
     "name": "\"Beaver\" Cockpit",
@@ -2997,8 +2763,7 @@ export const itemsData: Record<string, Item> = {
           "metal_bolt": 40
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "cockpit_mk_2": {
     "name": "\"Anvil\" Cockpit",
@@ -3016,8 +2781,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 50
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "cockpit_mk_3": {
     "name": "M&K \"Foreman\" Deck",
@@ -3032,8 +2796,7 @@ export const itemsData: Record<string, Item> = {
           "support_casing": 32
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "cockpit_da_1": {
     "name": "\"Cocoon\" Cockpit",
@@ -3049,33 +2812,27 @@ export const itemsData: Record<string, Item> = {
           "thermal_sheet": 20
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "cockpit_da_2": {
     "name": "\"Reality\" Cockpit",
-    "isBase": true,
-    "weight": 50
+    "isBase": true
   },
   "cockpit_da_3": {
     "name": "DA \"PlaceholderName\" Deck",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "deco_01": {
     "name": "Round Hatch",
-    "isBase": true,
-    "weight": 0
+    "isBase": true
   },
   "deco_04": {
     "name": "Intake Vent",
-    "isBase": true,
-    "weight": 0
+    "isBase": true
   },
   "deco_05": {
     "name": "Big Intake Vent",
-    "isBase": true,
-    "weight": 0
+    "isBase": true
   },
   "light_01": {
     "name": "Spot Light",
@@ -3090,8 +2847,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "light_02": {
     "name": "Light Strip",
@@ -3106,8 +2862,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "light_03": {
     "name": "Headlight",
@@ -3122,8 +2877,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "thruster_0": {
     "name": "\"Cart Pusher\" Thruster",
@@ -3139,20 +2893,17 @@ export const itemsData: Record<string, Item> = {
           "alternator": 1
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "thruster_1": {
     "name": "\"Long Haul Booster\"",
     "isBase": true,
-    "basePrice": 14400,
-    "weight": 1
+    "basePrice": 14400
   },
   "thruster_2": {
     "name": "\"Silent Thruster\"",
     "isBase": true,
-    "basePrice": 9600,
-    "weight": 1
+    "basePrice": 9600
   },
   "thruster_ae_1": {
     "name": "\"Quiet Breeze\" Thruster",
@@ -3169,8 +2920,7 @@ export const itemsData: Record<string, Item> = {
           "motor": 2
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "thruster_mk_1": {
     "name": "\"Grasshopper\" Thruster",
@@ -3188,8 +2938,7 @@ export const itemsData: Record<string, Item> = {
           "pipe_1": 15
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "thruster_da_1": {
     "name": "\"Voidseeker\" Thruster",
@@ -3207,8 +2956,7 @@ export const itemsData: Record<string, Item> = {
           "hematite": 3
         }
       }
-    ],
-    "weight": 20
+    ]
   },
   "storage_1": {
     "name": "Small Cargo Hold",
@@ -3224,8 +2972,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 4
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "storage_2": {
     "name": "Cargo Hold",
@@ -3241,8 +2988,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 20
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "storage_3": {
     "name": "Large Cargo Hold",
@@ -3259,8 +3005,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 400
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "liquid_storage_1": {
     "name": "Small Liquid Tank",
@@ -3277,8 +3022,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 30
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "liquid_storage_2": {
     "name": "Medium Liquid Tank",
@@ -3295,8 +3039,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 100
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "liquid_storage_3_ph": {
     "name": "Large Liquid Tank",
@@ -3313,24 +3056,20 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 500
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "pressure_storage_1": {
     "name": "Small Pressure Chamber",
     "isBase": true,
-    "basePrice": 620,
-    "weight": 10
+    "basePrice": 620
   },
   "pressure_storage_2_ph": {
     "name": "Medium Pressure Chamber",
-    "isBase": true,
-    "weight": 10
+    "isBase": true
   },
   "pressure_storage_3_ph": {
     "name": "Large Pressure Chamber",
-    "isBase": true,
-    "weight": 10
+    "isBase": true
   },
   "ftlengine_1": {
     "name": "FTL Engine - Eco",
@@ -3347,8 +3086,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 2
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "ftlengine_2_light": {
     "name": "FTL Engine - Light",
@@ -3366,8 +3104,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 3
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "ftlengine_2_medium": {
     "name": "FTL Engine - Mid-weight",
@@ -3385,8 +3122,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 10
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "ftlengine_2_heavy": {
     "name": "FTL Engine - Heavy",
@@ -3404,18 +3140,15 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 30
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "ftlengine_3_solo": {
     "name": "Advanced FTL Engine - Solo",
-    "isBase": true,
-    "weight": 10
+    "isBase": true
   },
   "ftlengine_3_support": {
     "name": "Advanced FTL Engine - Support",
-    "isBase": true,
-    "weight": 50
+    "isBase": true
   },
   "ftltank_1": {
     "name": "Small Mag-Plasma Tank",
@@ -3430,8 +3163,7 @@ export const itemsData: Record<string, Item> = {
           "magnetic_chamber": 1
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "ftltank_2": {
     "name": "Mag-Plasma Tank",
@@ -3446,8 +3178,7 @@ export const itemsData: Record<string, Item> = {
           "magnetic_chamber": 5
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "ftltank_3": {
     "name": "Big Mag-Plasma Tank",
@@ -3463,8 +3194,7 @@ export const itemsData: Record<string, Item> = {
           "magnetic_chamber": 1
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "navigator": {
     "name": "Cosmic Navigator",
@@ -3479,14 +3209,12 @@ export const itemsData: Record<string, Item> = {
           "micro_chip": 5
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "battery_0": {
     "name": "Crude Battery",
     "isBase": true,
-    "basePrice": 65,
-    "weight": 10
+    "basePrice": 65
   },
   "battery_1": {
     "name": "Battery Module",
@@ -3501,8 +3229,7 @@ export const itemsData: Record<string, Item> = {
           "battery": 5
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "battery_2": {
     "name": "BESS Module",
@@ -3518,8 +3245,7 @@ export const itemsData: Record<string, Item> = {
           "malachite_stone": 20
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "rbattery_0": {
     "name": "Flywheel Battery",
@@ -3535,8 +3261,7 @@ export const itemsData: Record<string, Item> = {
           "concrete": 2
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "pbattery": {
     "name": "Paradoxical Battery",
@@ -3551,8 +3276,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "isotopic_generator": {
     "name": "Isotopic Generator",
@@ -3567,8 +3291,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "fusion_generator": {
     "name": "Fusion Generator",
@@ -3583,8 +3306,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "power_sharer_ph": {
     "name": "Power Projector",
@@ -3599,13 +3321,11 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "nitrogenerator": {
     "name": "LR Nitrogenerator",
-    "isBase": true,
-    "weight": 10
+    "isBase": true
   },
   "carbon_generator": {
     "name": "Small Fuel Generator",
@@ -3622,13 +3342,11 @@ export const itemsData: Record<string, Item> = {
           "beam_1": 5
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "carbon_generator_2": {
     "name": "Large Fuel Generator",
-    "isBase": true,
-    "weight": 25
+    "isBase": true
   },
   "heater": {
     "name": "Electric Heater",
@@ -3644,8 +3362,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_isolant": 1
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "heater_2": {
     "name": "Boiler Heater",
@@ -3663,14 +3380,12 @@ export const itemsData: Record<string, Item> = {
           "thermal_paste": 50
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "heat_recouper": {
     "name": "Heat Condenser",
     "isBase": true,
-    "basePrice": 1390,
-    "weight": 10
+    "basePrice": 1390
   },
   "kinetic_shield_1": {
     "name": "Small Reactive Shield",
@@ -3686,8 +3401,7 @@ export const itemsData: Record<string, Item> = {
           "crystal_lattice_h": 1
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "kinetic_shield_2": {
     "name": "Reactive Shield",
@@ -3704,8 +3418,7 @@ export const itemsData: Record<string, Item> = {
           "crystal_lattice_c": 3
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "kinetic_shield_3": {
     "name": "Hyper Reactive Shield",
@@ -3723,8 +3436,7 @@ export const itemsData: Record<string, Item> = {
           "emerald": 1
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "barrier_shield_1": {
     "name": "Small Barrier Shield",
@@ -3740,8 +3452,7 @@ export const itemsData: Record<string, Item> = {
           "crystal_lattice_m": 1
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "barrier_shield_2": {
     "name": "Barrier Shield",
@@ -3758,8 +3469,7 @@ export const itemsData: Record<string, Item> = {
           "crystal_lattice_h": 5
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "barrier_shield_3": {
     "name": "Large Barrier Shield",
@@ -3777,8 +3487,7 @@ export const itemsData: Record<string, Item> = {
           "azurite_stone": 2
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "heavy_shield_2": {
     "name": "Heavy Shield",
@@ -3795,8 +3504,7 @@ export const itemsData: Record<string, Item> = {
           "crystal_lattice_m": 4
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "heavy_shield_3": {
     "name": "Large Heavy Shield",
@@ -3814,8 +3522,7 @@ export const itemsData: Record<string, Item> = {
           "diamond": 1
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "kinetic_shield_group": {
     "name": "Kinetic Shield Projector",
@@ -3831,8 +3538,7 @@ export const itemsData: Record<string, Item> = {
           "magnetic_chamber": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "heat_shield": {
     "name": "Thermal Shield",
@@ -3848,13 +3554,11 @@ export const itemsData: Record<string, Item> = {
           "magnetic_chamber": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "mag_shield": {
     "name": "Magnetokinetic Shield Generator",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "stealth_module_personnal": {
     "name": "Stealth Micro-Projector",
@@ -3869,8 +3573,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "stealth_module_group": {
     "name": "Stealth Macro-Projector",
@@ -3885,8 +3588,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "auto_boost_module": {
     "name": "Booster Control Mod",
@@ -3902,8 +3604,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 5
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "auto_mine_module": {
     "name": "Mining Laser Control Mod",
@@ -3918,14 +3619,12 @@ export const itemsData: Record<string, Item> = {
           "micro_chip": 2
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "engine_booster": {
     "name": "LR \"Speedster\"",
     "isBase": true,
-    "basePrice": 115,
-    "weight": 10
+    "basePrice": 115
   },
   "solar_panel_1": {
     "name": "Small Solar Panel",
@@ -3940,8 +3639,7 @@ export const itemsData: Record<string, Item> = {
           "solar_cell": 24
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "solar_panel_2": {
     "name": "Medium Solar Panel",
@@ -3956,8 +3654,7 @@ export const itemsData: Record<string, Item> = {
           "solar_cell": 90
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "solar_panel_3": {
     "name": "Large Solar Panel",
@@ -3973,8 +3670,7 @@ export const itemsData: Record<string, Item> = {
           "graphene": 150
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "radiator": {
     "name": "Small Radiator",
@@ -3990,8 +3686,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 50
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "radiator_1": {
     "name": "Medium Radiator",
@@ -4009,14 +3704,12 @@ export const itemsData: Record<string, Item> = {
           "thermal_paste": 20
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "radar_0": {
     "name": "Crude Resource Detector",
     "isBase": true,
-    "basePrice": 50,
-    "weight": 10
+    "basePrice": 50
   },
   "radar_mk_1": {
     "name": "Simple Resource Detector",
@@ -4031,8 +3724,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "radar_sniffer": {
     "name": "Mimetic Detector",
@@ -4049,8 +3741,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 3
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "radar_smart": {
     "name": "Spectral Resource Detector",
@@ -4066,8 +3757,7 @@ export const itemsData: Record<string, Item> = {
           "grating": 3
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "gravite_detector": {
     "name": "Gravitron",
@@ -4084,8 +3774,7 @@ export const itemsData: Record<string, Item> = {
           "grating": 3
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "scanner_0": {
     "name": "Scanalyzer Alpha",
@@ -4101,8 +3790,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 2
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "scanner_1": {
     "name": "Scanalyzer Beta",
@@ -4118,14 +3806,12 @@ export const itemsData: Record<string, Item> = {
           "crystal_lattice_c": 1
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "mining_tool_0": {
     "name": "Crude Mining Laser",
     "isBase": true,
-    "basePrice": 50,
-    "weight": 10
+    "basePrice": 50
   },
   "mining_tool_1": {
     "name": "Simple Mining Laser",
@@ -4140,8 +3826,7 @@ export const itemsData: Record<string, Item> = {
           "focuser": 2
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "mining_tool_1_oc": {
     "name": "Overclocked Mining Laser",
@@ -4157,8 +3842,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 3
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "mining_tool_cold": {
     "name": "Cooling Laser",
@@ -4174,8 +3858,7 @@ export const itemsData: Record<string, Item> = {
           "aquamarine": 5
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "mining_tool_2": {
     "name": "Hi-Pi Laser",
@@ -4190,8 +3873,7 @@ export const itemsData: Record<string, Item> = {
           "focuser_2": 3
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "mining_tool_2_oc": {
     "name": "Overclocked Hi-Pi Laser",
@@ -4207,18 +3889,15 @@ export const itemsData: Record<string, Item> = {
           "coil": 10
         }
       }
-    ],
-    "weight": 25
+    ]
   },
   "mining_tool_3": {
     "name": "Giant Laser",
-    "isBase": true,
-    "weight": 50
+    "isBase": true
   },
   "mining_tool_3_oc": {
     "name": "Overclocked Giant Laser",
-    "isBase": true,
-    "weight": 50
+    "isBase": true
   },
   "fluid_pumping_tool_1": {
     "name": "Simple Hose Pump",
@@ -4234,8 +3913,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 1
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "exploding_tool_mk_1": {
     "name": "Single-Tube Missile Launcher",
@@ -4251,24 +3929,20 @@ export const itemsData: Record<string, Item> = {
           "metal_bolt": 10
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "exploding_tool_mk_2": {
     "name": "8-Tube Missile Launcher",
-    "isBase": true,
-    "weight": 10
+    "isBase": true
   },
   "gun_turret_tool": {
     "name": "Small Gun Turret",
     "isBase": true,
-    "basePrice": 100,
-    "weight": 10
+    "basePrice": 100
   },
   "gun_turret_tool_1": {
     "name": "Gun Turret",
-    "isBase": true,
-    "weight": 10
+    "isBase": true
   },
   "pathway_puncher": {
     "name": "Spacetime Puncher",
@@ -4285,14 +3959,12 @@ export const itemsData: Record<string, Item> = {
           "grating": 20
         }
       }
-    ],
-    "weight": 10
+    ]
   },
   "seeker_missile_0": {
     "name": "Seeker Missile",
     "isBase": true,
-    "basePrice": 7.3,
-    "weight": 0.1
+    "basePrice": 7.3
   },
   "blast_missile_0": {
     "name": "Blasting Missile",
@@ -4307,8 +3979,7 @@ export const itemsData: Record<string, Item> = {
           "missile_airframe_small": 5
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "combat_missile_anti_matter": {
     "name": "Anti-matter Torpedo",
@@ -4323,8 +3994,7 @@ export const itemsData: Record<string, Item> = {
           "missile_airframe_small": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "beacon": {
     "name": "Quantum Beacon",
@@ -4339,8 +4009,7 @@ export const itemsData: Record<string, Item> = {
           "calcified_invariant": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "pathway_ammo": {
     "name": "Pathway Kernel",
@@ -4356,8 +4025,7 @@ export const itemsData: Record<string, Item> = {
           "beacon": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "hypergate_beacon": {
     "name": "Hypergate Beacon",
@@ -4371,8 +4039,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "locked_capsule": {
     "name": "Personal Capsule",
@@ -4386,13 +4053,11 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "nitro_capsule": {
     "name": "Nitro Capsule",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "cartridge_iron": {
     "name": "Small Cartridge",
@@ -4407,13 +4072,11 @@ export const itemsData: Record<string, Item> = {
           "metal_sheet_1": 1
         }
       }
-    ],
-    "weight": 0.01
+    ]
   },
   "p_multi_tool": {
     "name": "Debug Machine",
-    "isBase": true,
-    "weight": 0.1
+    "isBase": true
   },
   "p_construction_tool": {
     "name": "Construction Tool",
@@ -4429,8 +4092,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "p_dismentling_tool": {
     "name": "Construction Tool 2.0",
@@ -4446,8 +4108,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 2
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "p_moving_tool": {
     "name": "Construction Tool 3.0",
@@ -4463,8 +4124,7 @@ export const itemsData: Record<string, Item> = {
           "focuser_2": 1
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "p_farming_tool": {
     "name": "Farming Tool",
@@ -4480,24 +4140,20 @@ export const itemsData: Record<string, Item> = {
           "pipe_1": 3
         }
       }
-    ],
-    "weight": 0.1
+    ]
   },
   "p_jetpack": {
     "name": "Jetpack",
-    "isBase": true,
-    "weight": 0.1
+    "isBase": true
   },
   "p_jetpack_v_2": {
     "name": "Jetpack v2",
-    "isBase": true,
-    "weight": 0.1
+    "isBase": true
   },
   "p_critter_pheromon": {
     "name": "Pheromone Mix",
     "isBase": true,
-    "basePrice": 13.7,
-    "weight": 1
+    "basePrice": 13.7
   },
   "p_thermo_suit": {
     "name": "Thermo Suit Chip",
@@ -4512,8 +4168,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_isolant": 10
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "p_heat_suit": {
     "name": "Heat-Protec Suit Chip",
@@ -4528,8 +4183,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_paste": 10
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "p_cold_suit": {
     "name": "Cold-Protec Suit Chip",
@@ -4545,8 +4199,7 @@ export const itemsData: Record<string, Item> = {
           "thermal_paste": 10
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "p_rad_suit": {
     "name": "Rad Suit Chip",
@@ -4562,53 +4215,43 @@ export const itemsData: Record<string, Item> = {
           "activated_coal": 4
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "access_corpo_1": {
     "name": "CPAF Pass (Test Subject)",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "access_corpo_2": {
     "name": "CPAF Pass (Designer)",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "access_warehouse": {
     "name": "Warehouse Pass",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "access_prospecting": {
     "name": "Prospecting Hub Pass",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "access_mine_1": {
     "name": "Administrative Quarter Pass",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "access_mine_2": {
     "name": "Elevator Pass",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "access_lab_monsters": {
     "name": "Janitor Pass",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "access_dark_2": {
     "name": "[TODO] Director Pass",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "access_dark_4": {
     "name": "[TODO] Maintenance Key",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "drone_0": {
     "name": "Drone",
@@ -4625,8 +4268,7 @@ export const itemsData: Record<string, Item> = {
           "metal_bolt": 6
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "shuttle_0": {
     "name": "Shuttle",
@@ -4645,8 +4287,7 @@ export const itemsData: Record<string, Item> = {
           "carbonic_fuel": 20
         }
       }
-    ],
-    "weight": 50
+    ]
   },
   "shuttle_1": {
     "name": "Freighter",
@@ -4664,8 +4305,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "pshuttle": {
     "name": "Power Shuttle",
@@ -4683,43 +4323,35 @@ export const itemsData: Record<string, Item> = {
           "wire": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "fps_instance_entrance": {
     "name": "FPS_Instance_Entrance",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "space_station_0": {
     "name": "Threshold Station",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "space_station_1": {
     "name": "Solar Alpha Station",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "space_station_4": {
     "name": "Justice Station",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "space_station_5": {
     "name": "Horizon Station",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "space_station_2": {
     "name": "Terminus Station",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "space_station_3": {
     "name": "Cairn Station",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "b_control_base": {
     "name": "Base Command Center",
@@ -4733,8 +4365,7 @@ export const itemsData: Record<string, Item> = {
           "control_base_kit": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_control_base_2": {
     "name": "Command Tower",
@@ -4751,13 +4382,11 @@ export const itemsData: Record<string, Item> = {
           "concrete": 250
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_control_base_3_ph": {
     "name": "Command Relay",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "b_control_base_corpo_1": {
     "name": "Corporation Command Center",
@@ -4775,8 +4404,7 @@ export const itemsData: Record<string, Item> = {
           "concrete": 10000
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_extractor": {
     "name": "Extractor",
@@ -4791,8 +4419,7 @@ export const itemsData: Record<string, Item> = {
           "concrete": 4
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_liquid_extractor": {
     "name": "Liquid Extractor",
@@ -4810,8 +4437,7 @@ export const itemsData: Record<string, Item> = {
           "pipe_1": 80
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_extractor_1_ph": {
     "name": "Advanced Extractor",
@@ -4829,8 +4455,7 @@ export const itemsData: Record<string, Item> = {
           "concrete": 20
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_solar_panel": {
     "name": "Solar Plant",
@@ -4846,8 +4471,7 @@ export const itemsData: Record<string, Item> = {
           "solar_cell": 36
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_warehouse": {
     "name": "Warehouse",
@@ -4864,8 +4488,7 @@ export const itemsData: Record<string, Item> = {
           "concrete": 20
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_organiser": {
     "name": "Drone Dispatcher",
@@ -4880,8 +4503,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_chest": {
     "name": "Trading Box",
@@ -4895,8 +4517,7 @@ export const itemsData: Record<string, Item> = {
           "metal_sheet_1": 10
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_cistern": {
     "name": "Cistern",
@@ -4914,8 +4535,7 @@ export const itemsData: Record<string, Item> = {
           "silicone_gel": 100
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_ftlcistern": {
     "name": "Mag-Plasma Cistern",
@@ -4932,8 +4552,7 @@ export const itemsData: Record<string, Item> = {
           "mag_sheet": 10
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_ftlgatherer": {
     "name": "Cosmic Condenser",
@@ -4948,8 +4567,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_crystaliser": {
     "name": "Crystallizer",
@@ -4966,8 +4584,7 @@ export const itemsData: Record<string, Item> = {
           "pipe_1": 10
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_farm": {
     "name": "Xenic Farm",
@@ -4985,8 +4602,7 @@ export const itemsData: Record<string, Item> = {
           "pipe_1": 60
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_antimatter_synth_ph": {
     "name": "Antimatter Synthesizer",
@@ -5001,8 +4617,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 10
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_labo_ph": {
     "name": "Laboratory",
@@ -5018,8 +4633,7 @@ export const itemsData: Record<string, Item> = {
           "motor": 2
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_connector": {
     "name": "Cable",
@@ -5033,8 +4647,7 @@ export const itemsData: Record<string, Item> = {
           "wire": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_electric_pillar": {
     "name": "Pylon",
@@ -5048,8 +4661,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_generator": {
     "name": "Fuel Power Plant",
@@ -5066,14 +4678,12 @@ export const itemsData: Record<string, Item> = {
           "motor": 10
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_generator_2": {
     "name": "Advanced Fuel Power Plant",
     "isBase": true,
-    "basePrice": 251,
-    "weight": 1
+    "basePrice": 251
   },
   "b_fusion_generator": {
     "name": "Fusion Plant",
@@ -5089,14 +4699,12 @@ export const itemsData: Record<string, Item> = {
           "solar_cell": 216
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_heat_recouper": {
     "name": "Heat Capacitor",
     "isBase": true,
-    "basePrice": 2120,
-    "weight": 1
+    "basePrice": 2120
   },
   "b_power_transmitter": {
     "name": "Power Transmitter",
@@ -5114,8 +4722,7 @@ export const itemsData: Record<string, Item> = {
           "graphenoid": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_battery": {
     "name": "Battery Array",
@@ -5132,8 +4739,7 @@ export const itemsData: Record<string, Item> = {
           "coil": 4
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_factory_1": {
     "name": "Assembler",
@@ -5150,8 +4756,7 @@ export const itemsData: Record<string, Item> = {
           "motor": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_factory_2": {
     "name": "Factory",
@@ -5170,8 +4775,7 @@ export const itemsData: Record<string, Item> = {
           "actuator": 4
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_smelter": {
     "name": "Smelter",
@@ -5186,8 +4790,7 @@ export const itemsData: Record<string, Item> = {
           "concrete": 10
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_smelter_sa": {
     "name": "Micro-Furnace",
@@ -5203,8 +4806,7 @@ export const itemsData: Record<string, Item> = {
           "calcite": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_chemical": {
     "name": "Chemical Factory",
@@ -5222,8 +4824,7 @@ export const itemsData: Record<string, Item> = {
           "pipe_1": 120
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_bottling_plant": {
     "name": "Bottling Plant",
@@ -5241,8 +4842,7 @@ export const itemsData: Record<string, Item> = {
           "concrete": 5
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_recycling_plant": {
     "name": "Recycling Plant",
@@ -5259,8 +4859,7 @@ export const itemsData: Record<string, Item> = {
           "motor": 5
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_shuttle_pad": {
     "name": "Shuttle Landing Pad",
@@ -5278,8 +4877,7 @@ export const itemsData: Record<string, Item> = {
           "beacon": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_landing_pad": {
     "name": "Landing Pad",
@@ -5294,8 +4892,7 @@ export const itemsData: Record<string, Item> = {
           "concrete": 40
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_shipyard": {
     "name": "Shipyard",
@@ -5311,13 +4908,11 @@ export const itemsData: Record<string, Item> = {
           "concrete": 90
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_standalone_foundation": {
     "name": "Stand-alone Foundation",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "b_pathway_holder": {
     "name": "Pathway Stand",
@@ -5334,8 +4929,7 @@ export const itemsData: Record<string, Item> = {
           "beacon": 1
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_atmo_dome": {
     "name": "Atmo-dome Generator",
@@ -5350,8 +4944,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_observatory": {
     "name": "Observatory",
@@ -5366,8 +4959,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 3
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_hypergate": {
     "name": "Hypergate",
@@ -5383,8 +4975,7 @@ export const itemsData: Record<string, Item> = {
           "plate_1": 12
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_sun_station": {
     "name": "Sun Station",
@@ -5400,67 +4991,54 @@ export const itemsData: Record<string, Item> = {
           "solar_cell": 216
         }
       }
-    ],
-    "weight": 1
+    ]
   },
   "b_deco_test": {
     "name": "Test deco",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "b_deco_pirate": {
     "name": "Pirate Hologram",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "b_deco_transcendance": {
     "name": "Transcendance Hologram",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "b_deco_planet": {
     "name": "Planet Hologram",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "b_deco_sakura": {
     "name": "Sakura Hologram",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "b_deco_snake": {
     "name": "Snake Hologram",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "b_deco_diver": {
     "name": "Diver Hologram",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "unknown": {
     "name": "???",
-    "isBase": true,
-    "weight": 5
+    "isBase": true
   },
   "instance_entrance": {
     "name": "InstanceEntrance",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "instance_building": {
     "name": "InstanceBuilding",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "station_floor": {
     "name": "StationFloor",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   },
   "foundation": {
     "name": "Foundation",
-    "isBase": true,
-    "weight": 1
+    "isBase": true
   }
 };

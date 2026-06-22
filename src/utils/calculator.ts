@@ -186,7 +186,7 @@ export function calculatePossibilities(itemId: string, quantity: number, itemsDa
 
   // Convert inputsMap to list of cartItems
   const cartItems = Object.entries(inputsMap).map(([inputId, qty]) => ({
-    itemId: inputId,
+    id: inputId,
     quantity: qty
   }));
 
@@ -240,7 +240,7 @@ export function calculateCartPossibilities(cartItems: any[], itemsData: Record<s
 
     for (const currPoss of currentPossibilities) {
       const itemPossibilities = calculatePossibilities(
-        cartItem.itemId, 
+        cartItem.id, 
         cartItem.quantity, 
         itemsData, 
         currPoss.remainingInventory,
