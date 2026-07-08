@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
 import { itemsData } from '../data/items'
-import { calculateCartPossibilities } from '../utils/calculator'
+import { calculateCartPossibilities, createSmartRegex } from '../utils/calculator'
 import type { CartItem } from '../types'
 
 export const useCraftingStore = defineStore('crafting', () => {
@@ -30,8 +30,14 @@ export const useCraftingStore = defineStore('crafting', () => {
 
   const filteredCart = computed(() => {
     if (!cartSearchQuery.value.trim()) return cart.value
-    const query = cartSearchQuery.value.toLowerCase().trim()
-    return cart.value.filter(item => item.name.toLowerCase().includes(query))
+    const query = cartSearchQuery.value.trim()
+    try {
+      const regex = createSmartRegex(query)
+      return cart.value.filter(item => regex.test(item.name))
+    } catch (e) {
+      const lowerQuery = query.toLowerCase()
+      return cart.value.filter(item => item.name.toLowerCase().includes(lowerQuery))
+    }
   })
 
   const possibilityOre = computed(() => {
@@ -83,9 +89,24 @@ export const useCraftingStore = defineStore('crafting', () => {
         items: ['iron_ore', 'iron_nugget']
       },
       {
+        id: 'titanium_alt',
+        name: 'Titanium Ore or Titanium Nugget',
+        items: ['titanium_ore', 'titanium_nugget']
+      },
+      {
         id: 'aluminum_alt',
         name: 'Aluminum Ore or Aluminum Nugget',
         items: ['aluminium_ore', 'aluminium_nugget']
+      },
+      {
+        id: 'diamond_alt',
+        name: 'Diamond or Pyrite',
+        items: ['diamond', 'pyrite']
+      },
+      {
+        id: 'crystal_lattice_m_alt',
+        name: 'Azurite Stone or Malachite Stone',
+        items: ['azurite_stone', 'malachite_stone']
       }
     ]
 
@@ -153,9 +174,24 @@ export const useCraftingStore = defineStore('crafting', () => {
     for (const tree of activePossibility.value.trees) {
       accumulateCraftedItems(tree, accumulated)
     }
+
+    const totalAccumulated: Record<string, number> = {}
+    if (activeCart.value.length > 0) {
+      try {
+        const noInvPossibilities = calculateCartPossibilities(activeCart.value, itemsData, {}, activePreference.value)
+        const noInvPossibility = noInvPossibilities[0]
+        if (noInvPossibility && noInvPossibility.trees) {
+          for (const tree of noInvPossibility.trees) {
+            accumulateCraftedItems(tree, totalAccumulated)
+          }
+        }
+      } catch (e) {
+        console.error(e)
+      }
+    }
     
     // Sort nodes alphabetically by name initially for a stable order
-    const nodes = Object.keys(accumulated).sort((a, b) => {
+    const nodes = Object.keys(totalAccumulated).sort((a, b) => {
       const nameA = itemsData[a]?.name || a
       const nameB = itemsData[b]?.name || b
       return nameA.localeCompare(nameB)
@@ -183,7 +219,7 @@ export const useCraftingStore = defineStore('crafting', () => {
         }
         
         for (const inputId of inputs) {
-          if (accumulated[inputId] !== undefined) {
+          if (totalAccumulated[inputId] !== undefined) {
             visit(inputId)
           }
         }
@@ -201,14 +237,20 @@ export const useCraftingStore = defineStore('crafting', () => {
     const activeList = []
     
     for (const key of sortedIds) {
+      const qty = accumulated[key] || 0
+      const total = totalAccumulated[key] || qty
       activeList.push({
         id: key,
         name: itemsData[key]?.name || key,
-        quantity: accumulated[key]
+        quantity: qty,
+        total: total
       })
     }
+
+    const remainingItems = activeList.filter(item => item.quantity > 0)
+    const completedItems = activeList.filter(item => item.quantity === 0)
     
-    return activeList
+    return [...remainingItems, ...completedItems]
   })
 
   const inventoryList = computed(() => {
@@ -257,8 +299,14 @@ export const useCraftingStore = defineStore('crafting', () => {
 
   const filteredInventoryList = computed(() => {
     if (!inventorySearchQuery.value.trim()) return inventoryList.value
-    const query = inventorySearchQuery.value.toLowerCase().trim()
-    return inventoryList.value.filter(item => item.name.toLowerCase().includes(query))
+    const query = inventorySearchQuery.value.trim()
+    try {
+      const regex = createSmartRegex(query)
+      return inventoryList.value.filter(item => regex.test(item.name))
+    } catch (e) {
+      const lowerQuery = query.toLowerCase()
+      return inventoryList.value.filter(item => item.name.toLowerCase().includes(lowerQuery))
+    }
   })
 
   // --- Actions ---
@@ -287,10 +335,6 @@ export const useCraftingStore = defineStore('crafting', () => {
         return
       }
 
-      // Activate all items in the crafting list when adding a new recipe
-      cart.value.forEach(i => {
-        i.active = true
-      })
 
       const existing = cart.value.find(i => i.id === itemId)
       if (existing) {
@@ -307,6 +351,27 @@ export const useCraftingStore = defineStore('crafting', () => {
           inventory.value[reqId] = 0
         }
       }
+
+      // Remove the base items (recipe inputs) used to craft it from the inventory
+      if (item.recipes && item.recipes.length > 0) {
+        let recipe = item.recipes[0]
+        if (activePreference.value) {
+          const prefIdx = item.recipes.findIndex(r => r.id.includes(activePreference.value))
+          if (prefIdx !== -1) {
+            recipe = item.recipes[prefIdx]
+          }
+        }
+
+        if (recipe && recipe.inputs) {
+          const runs = Math.ceil(quantity / recipe.yield)
+          for (const [inputId, qtyPerRun] of Object.entries(recipe.inputs)) {
+            const requiredQty = qtyPerRun * runs
+            const currentQty = inventory.value[inputId] || 0
+            inventory.value[inputId] = Math.max(0, currentQty - requiredQty)
+          }
+        }
+      }
+
       inventory.value = { ...inventory.value }
     }
   }

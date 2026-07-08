@@ -3,11 +3,12 @@ import { ref, computed } from 'vue'
 import { itemsData } from '../data/items'
 import Card from 'primevue/card'
 import { usePrices } from '../utils/usePrices'
-import { calculatePossibilities } from '../utils/calculator'
+import { calculatePossibilities, createSmartRegex } from '../utils/calculator'
 
 const { getPrice } = usePrices()
 
 const searchQuery = ref('')
+const showHelpModal = ref(false)
 const sortCol = ref<'name'|'sell'|'directProfit'|'rawProfit'>('rawProfit')
 const sortDesc = ref(true)
 
@@ -59,9 +60,15 @@ const analyzedItems = computed(() => {
 const filteredAndSortedItems = computed(() => {
   let list = analyzedItems.value
 
-  if (searchQuery.value) {
-    const q = searchQuery.value.toLowerCase().trim()
-    list = list.filter(item => item.name.toLowerCase().includes(q))
+  if (searchQuery.value.trim()) {
+    const query = searchQuery.value.trim()
+    try {
+      const regex = createSmartRegex(query)
+      list = list.filter(item => regex.test(item.name))
+    } catch (e) {
+      const lowerQuery = query.toLowerCase()
+      list = list.filter(item => item.name.toLowerCase().includes(lowerQuery))
+    }
   }
 
   list.sort((a, b) => {
@@ -110,6 +117,7 @@ const getProfitClass = (profit: number) => {
       <template #content>
         <div class="header-controls">
           <p class="subtitle">Compare the sell price of crafted items against their direct crafting cost and raw material cost.</p>
+          <div class="search-bar">
           <div class="search-wrapper">
             <i class="pi pi-search search-icon"></i>
             <input 
@@ -117,8 +125,18 @@ const getProfitClass = (profit: number) => {
               v-model="searchQuery" 
               placeholder="Search items..." 
               class="custom-search-input"
+              style="padding-right: 3.25rem;"
             />
+            <div style="display: flex; align-items: center; gap: 0.25rem; position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%);">
+              <button type="button" @click="showHelpModal = true" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem; display: flex; align-items: center;" title="Search Regex Helper">
+                <i class="pi pi-question-circle"></i>
+              </button>
+              <button v-if="searchQuery" type="button" @click="searchQuery = ''" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem; display: flex; align-items: center;">
+                <i class="pi pi-times"></i>
+              </button>
+            </div>
           </div>
+        </div>
         </div>
 
         <div class="table-container">
@@ -162,9 +180,52 @@ const getProfitClass = (profit: number) => {
               </tr>
             </tbody>
           </table>
-        </div>
+         </div>
       </template>
     </Card>
+
+    <!-- Search Regex Helper Modal -->
+    <div v-if="showHelpModal" class="modal-backdrop" @click.self="showHelpModal = false">
+      <div class="modal-content help-modal-content">
+        <div class="modal-header">
+          <i class="pi pi-info-circle info-icon-modal"></i>
+          <h3>Regex Search Helper</h3>
+        </div>
+        <div class="modal-body">
+          <p>The search fields support standard text search and **Regular Expressions (Regex)**. The search is case-insensitive.</p>
+          
+          <div class="help-section">
+            <h4>Common Patterns & Examples:</h4>
+            <ul class="help-list">
+              <li>
+                <span class="code-badge">|</span> 
+                <strong>OR Operator:</strong> Match one term or another. Plurals are automatically supported.
+                <div class="example"><code>ingots|ores</code> &rarr; matches items containing "ingot" or "ore".</div>
+              </li>
+              <li>
+                <span class="code-badge">^</span> 
+                <strong>Start Anchor:</strong> Match items starting with a term.
+                <div class="example"><code>^gold</code> &rarr; matches "Gold Nugget", but not "refined gold".</div>
+              </li>
+              <li>
+                <span class="code-badge">$</span> 
+                <strong>End Anchor:</strong> Match items ending with a term.
+                <div class="example"><code>plate$</code> &rarr; matches "Iron Plate", but not "Plate Assembly".</div>
+              </li>
+              <li>
+                <span class="code-badge">.*</span> 
+                <strong>Wildcard:</strong> Match anything in between.
+                <div class="example"><code>copper.*wire</code> &rarr; matches "Copper Wire" and "Copper Coated Wire".</div>
+              </li>
+            </ul>
+          </div>
+          <p class="fallback-note"><em>Note: If you enter an invalid regular expression, the search will temporarily fall back to matching the exact text.</em></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" @click="showHelpModal = false" class="modal-close-btn">Got it</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -343,5 +404,158 @@ const getProfitClass = (profit: number) => {
   padding: 3rem !important;
   color: var(--p-surface-500) !important;
   font-style: italic;
+}
+
+/* Custom Confirmation Modal Styling */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: var(--p-surface-900);
+  border: 1px solid var(--p-surface-700);
+  border-radius: var(--p-border-radius);
+  width: 90%;
+  max-width: 400px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.2s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: 1.25rem;
+  color: var(--p-surface-0);
+}
+
+.modal-body {
+  color: var(--p-surface-300);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.modal-close-btn {
+  width: 100%;
+  background-color: var(--p-primary-color);
+  color: var(--p-primary-contrast-color, #ffffff);
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--p-border-radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--p-primary-hover-color, var(--p-primary-600));
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.help-modal-content {
+  max-width: 500px !important;
+}
+
+.help-modal-content .info-icon-modal {
+  font-size: 1.5rem;
+  color: var(--p-primary-500);
+}
+
+.help-section {
+  background-color: var(--p-surface-950);
+  border: 1px solid var(--p-surface-800);
+  border-radius: var(--p-border-radius);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.help-section h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--p-surface-100);
+  font-size: 0.95rem;
+}
+
+.help-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.help-list li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--p-surface-300);
+}
+
+.code-badge {
+  display: inline-block;
+  background-color: var(--p-surface-800);
+  color: var(--p-primary-400);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.example {
+  margin-top: 0.2rem;
+  margin-left: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--p-surface-400);
+}
+
+.example code {
+  background-color: var(--p-surface-800);
+  padding: 0.05rem 0.25rem;
+  border-radius: 3px;
+  color: var(--p-surface-200);
+}
+
+.fallback-note {
+  font-size: 0.85rem;
+  color: var(--p-surface-400);
+  margin-top: 1rem;
 }
 </style>

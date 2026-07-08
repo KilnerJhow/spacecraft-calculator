@@ -10,6 +10,7 @@ export interface Item {
   recipes?: Recipe[];
   description?: string;
   basePrice?: number;
+  weight?: number;
 }
 
 export interface SupplyChainNode {

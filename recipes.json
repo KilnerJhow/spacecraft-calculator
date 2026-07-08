@@ -4852,7 +4852,7 @@
       "inputs": [
         {
           "id": "beam_1",
-          "qty": 12
+          "qty": 6
         },
         {
           "id": "plate_1",
@@ -4892,7 +4892,7 @@
       "inputs": [
         {
           "id": "beam_2",
-          "qty": 12
+          "qty": 8
         },
         {
           "id": "plate_2",

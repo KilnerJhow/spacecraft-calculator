@@ -141,7 +141,15 @@ export function calculatePossibilities(itemId: string, quantity: number, itemsDa
   if (qLeft > 0) {
     let defaultRecipeIdx = 0;
     if (preference) {
-      const prefIdx = recipes.findIndex(r => r.id.includes(preference));
+      let prefIdx = recipes.findIndex(r => r.id.includes(preference));
+      // Special mappings for general preferences
+      if (prefIdx === -1 && preference === 'nugget') {
+        if (itemId === 'crystal_lattice_c') {
+          prefIdx = recipes.findIndex(r => r.id.includes('pyrite'));
+        } else if (itemId === 'crystal_lattice_m') {
+          prefIdx = recipes.findIndex(r => r.id.includes('malachite'));
+        }
+      }
       if (prefIdx !== -1) {
         defaultRecipeIdx = prefIdx;
       }
@@ -264,4 +272,19 @@ export function calculateCartPossibilities(cartItems: any[], itemsData: Record<s
   }
 
   return currentPossibilities;
+}
+
+/**
+ * Creates a smart RegExp from a query string.
+ * Automatically makes trailing 's' optional before pipes or at the end of the string
+ * to better support searching for plurals (e.g., "ingots|ores" -> /ingot(?:s)?|ore(?:s)?/i)
+ * 
+ * @param {string} query - The search query.
+ * @returns {RegExp} The generated RegExp.
+ */
+export function createSmartRegex(query: string): RegExp {
+  // Make word-final 's' optional for plural/singular tolerance.
+  // Lookbehind ensures the 's' follows a letter (not a backslash like \s).
+  const smartQuery = query.replace(/(?<=[a-zA-Z])s\b/gi, 's?');
+  return new RegExp(smartQuery, 'i');
 }

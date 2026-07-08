@@ -63,6 +63,7 @@ const isInventoryExpanded = ref(false)
 const deletingItemId = ref<string | null>(null)
 const showClearConfirm = ref(false)
 const showCompleteConfirm = ref(false)
+const showHelpModal = ref(false)
 const itemToComplete = ref<any>(null)
 
 const confirmDeleteInventory = (id: string) => {
@@ -163,9 +164,14 @@ const preferenceOptions = [
                 placeholder="Search crafting list..." 
                 style="background: transparent; border: none; color: var(--p-surface-50); outline: none; font-size: 0.9rem; width: 100%;"
               />
-              <button v-if="cartSearchQuery" @click="cartSearchQuery = ''" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem;">
-                <i class="pi pi-times"></i>
-              </button>
+              <div style="display: flex; align-items: center; gap: 0.25rem;">
+                <button type="button" @click="showHelpModal = true" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem; display: flex; align-items: center;" title="Search Regex Helper">
+                  <i class="pi pi-question-circle"></i>
+                </button>
+                <button v-if="cartSearchQuery" type="button" @click="cartSearchQuery = ''" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem; display: flex; align-items: center;">
+                  <i class="pi pi-times"></i>
+                </button>
+              </div>
             </div>
             
             <div :class="['table-wrapper', { 'is-expanded': isCartExpanded }]">
@@ -308,15 +314,20 @@ const preferenceOptions = [
                 placeholder="Search inventory..." 
                 style="background: transparent; border: none; color: var(--p-surface-50); outline: none; font-size: 0.9rem; width: 100%;"
               />
-              <button v-if="inventorySearchQuery" @click="inventorySearchQuery = ''" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem;">
-                <i class="pi pi-times"></i>
-              </button>
+              <div style="display: flex; align-items: center; gap: 0.25rem;">
+                <button type="button" @click="showHelpModal = true" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem; display: flex; align-items: center;" title="Search Regex Helper">
+                  <i class="pi pi-question-circle"></i>
+                </button>
+                <button v-if="inventorySearchQuery" type="button" @click="inventorySearchQuery = ''" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem; display: flex; align-items: center;">
+                  <i class="pi pi-times"></i>
+                </button>
+              </div>
             </div>
             
             <div :class="['table-wrapper', { 'is-expanded': isInventoryExpanded }]">
-              <DataTable v-if="filteredInventoryList.length > 0" :value="filteredInventoryList" responsiveLayout="scroll" class="p-datatable-sm">
-                <Column field="name" header="Item"></Column>
-                <Column header="Quantity">
+              <DataTable v-if="filteredInventoryList.length > 0" :value="filteredInventoryList" responsiveLayout="scroll" class="p-datatable-sm" removableSort>
+                <Column field="name" header="Item" :sortable="true"></Column>
+                <Column field="quantity" header="Owned" :sortable="true">
                     <template #body="slotProps">
                       <div style="display: flex; align-items: center; gap: 0.25rem; flex-wrap: nowrap;">
                         <Button icon="pi pi-minus" text rounded size="small" @click="updateInventoryQty(slotProps.data.id, (inventory[slotProps.data.id] || 0) - ($event.shiftKey ? 10 : 1))" title="Shift+Click to subtract 10" />
@@ -326,16 +337,19 @@ const preferenceOptions = [
                           class="qty-input"
                         />
                         <Button icon="pi pi-plus" text rounded size="small" @click="updateInventoryQty(slotProps.data.id, (inventory[slotProps.data.id] || 0) + ($event.shiftKey ? 10 : 1))" title="Shift+Click to add 10" />
-                        
-                        <!-- Quota Info -->
-                        <span 
-                          v-if="slotProps.data.needed > 0"
-                          :style="{ color: slotProps.data.isSufficient ? '#34d399' : '#f87171' }" 
-                          style="font-weight: bold; font-size: 1.05rem; margin-left: 0.5rem; white-space: nowrap;"
-                        >
-                          / {{ slotProps.data.needed }}
-                        </span>
                       </div>
+                    </template>
+                </Column>
+                <Column field="needed" header="Needed" :sortable="true" headerStyle="width: 7rem" bodyStyle="text-align: center">
+                    <template #body="slotProps">
+                      <span 
+                        v-if="slotProps.data.needed > 0"
+                        :style="{ color: slotProps.data.isSufficient ? '#34d399' : '#f87171' }" 
+                        style="font-weight: bold; font-size: 1.05rem;"
+                      >
+                        {{ slotProps.data.needed }}
+                      </span>
+                      <span v-else style="color: var(--p-surface-600)">-</span>
                     </template>
                 </Column>
                 <Column headerStyle="width: 6.5rem; text-align: center" bodyStyle="text-align: center; overflow: visible">
@@ -407,7 +421,7 @@ const preferenceOptions = [
               </div>
               <div class="summary-section">
                 <h3>Required Base Resources</h3>
-                <BaseResourcesSummary :resources="mergedBaseResources" @resource-selected="handleResourceSelected" />
+                <BaseResourcesSummary :resources="mergedBaseResources" :activePreference="activePreference" @resource-selected="handleResourceSelected" />
                 <div v-if="mergedBaseResources.length === 0" class="empty-state mt-3">
                   <i class="pi pi-check-circle" style="color: var(--p-primary-500); margin-right: 0.5rem;"></i>
                   You have everything you need in your inventory!
@@ -418,15 +432,17 @@ const preferenceOptions = [
                   <div 
                     v-for="item in itemsToCraft" 
                     :key="item.id" 
-                    class="craft-item clickable"
-                    @click="handleCraftedItem(item)"
-                    title="Click to add to inventory"
+                    :class="['craft-item', { clickable: item.quantity > 0, completed: item.quantity === 0 }]"
+                    @click="item.quantity > 0 ? handleCraftedItem(item) : null"
+                    :title="item.quantity > 0 ? 'Click to add to inventory' : 'Completed! All needed units are in inventory'"
                   >
                     <div class="craft-item-left">
-                      <i class="pi pi-circle mr-2"></i>
+                      <i :class="['pi', item.quantity === 0 ? 'pi-check-circle' : 'pi-circle', 'mr-2']" :style="{ color: item.quantity === 0 ? '#34d399' : 'inherit' }"></i>
                       <span class="craft-name">{{ item.name }}</span>
                     </div>
-                    <span class="craft-qty">{{ item.quantity }}x</span>
+                    <span class="craft-qty">
+                      {{ item.quantity }}<span class="craft-qty-separator">/</span><span class="craft-qty-total">{{ item.total }}x</span>
+                    </span>
                   </div>
                 </div>
                 <div v-else class="empty-state mt-2">
@@ -477,6 +493,49 @@ const preferenceOptions = [
         <div class="modal-footer">
           <Button label="Cancel" severity="secondary" @click="showCompleteConfirm = false; itemToComplete = null" />
           <Button label="Confirm" severity="success" @click="handleMarkAsCompleted" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Regex Helper Modal -->
+    <div v-if="showHelpModal" class="modal-backdrop" @click.self="showHelpModal = false">
+      <div class="modal-content help-modal-content">
+        <div class="modal-header">
+          <i class="pi pi-info-circle info-icon"></i>
+          <h3>Regex Search Helper</h3>
+        </div>
+        <div class="modal-body">
+          <p>The search fields support standard text search and **Regular Expressions (Regex)**. The search is case-insensitive.</p>
+          
+          <div class="help-section">
+            <h4>Common Patterns & Examples:</h4>
+            <ul class="help-list">
+              <li>
+                <span class="code-badge">|</span> 
+                <strong>OR Operator:</strong> Match one term or another.
+                <div class="example"><code>ingots|ores</code> &rarr; matches items containing "ingots" or "ores".</div>
+              </li>
+              <li>
+                <span class="code-badge">^</span> 
+                <strong>Start Anchor:</strong> Match items starting with a term.
+                <div class="example"><code>^gold</code> &rarr; matches "Gold Nugget", but not "refined gold".</div>
+              </li>
+              <li>
+                <span class="code-badge">$</span> 
+                <strong>End Anchor:</strong> Match items ending with a term.
+                <div class="example"><code>plate$</code> &rarr; matches "Iron Plate", but not "Plate Assembly".</div>
+              </li>
+              <li>
+                <span class="code-badge">.*</span> 
+                <strong>Wildcard:</strong> Match anything in between.
+                <div class="example"><code>copper.*wire</code> &rarr; matches "Copper Wire" and "Copper Coated Wire".</div>
+              </li>
+            </ul>
+          </div>
+          <p class="fallback-note"><em>Note: If you enter an invalid regular expression, the search will temporarily fall back to matching the exact text.</em></p>
+        </div>
+        <div class="modal-footer">
+          <Button label="Got it" severity="primary" @click="showHelpModal = false" class="w-full" />
         </div>
       </div>
     </div>
@@ -700,6 +759,37 @@ h3 {
   font-weight: 700;
 }
 
+.craft-qty-separator {
+  margin: 0 0.15rem;
+  color: var(--p-surface-500);
+  font-weight: normal;
+}
+
+.craft-qty-total {
+  color: var(--p-surface-400);
+  font-weight: normal;
+}
+
+.craft-item.completed {
+  opacity: 0.65;
+  border-color: var(--p-surface-800);
+  background-color: var(--p-surface-950);
+  cursor: default;
+}
+
+.craft-item.completed .craft-name {
+  text-decoration: line-through;
+  color: var(--p-surface-400);
+}
+
+.craft-item.completed .craft-qty {
+  color: var(--p-surface-500);
+}
+
+.craft-item.completed .craft-qty-total {
+  color: var(--p-surface-600);
+}
+
 .table-wrapper {
   max-height: 250px;
   overflow-y: auto;
@@ -791,5 +881,75 @@ h3 {
 @keyframes scaleIn {
   from { transform: scale(0.95); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+.help-modal-content {
+  max-width: 500px !important;
+}
+
+.help-modal-content .info-icon {
+  font-size: 1.5rem;
+  color: var(--p-primary-500);
+}
+
+.help-section {
+  background-color: var(--p-surface-950);
+  border: 1px solid var(--p-surface-800);
+  border-radius: var(--p-border-radius);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.help-section h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--p-surface-100);
+  font-size: 0.95rem;
+}
+
+.help-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.help-list li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--p-surface-300);
+}
+
+.code-badge {
+  display: inline-block;
+  background-color: var(--p-surface-800);
+  color: var(--p-primary-400);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.example {
+  margin-top: 0.2rem;
+  margin-left: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--p-surface-400);
+}
+
+.example code {
+  background-color: var(--p-surface-800);
+  padding: 0.05rem 0.25rem;
+  border-radius: 3px;
+  color: var(--p-surface-200);
+}
+
+.fallback-note {
+  font-size: 0.85rem;
+  color: var(--p-surface-400);
+  margin-top: 1rem;
 }
 </style>

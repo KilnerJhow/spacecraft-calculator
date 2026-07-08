@@ -1,0 +1,171 @@
+{
+  "deposits": [
+    {
+      "id": "iron-deposit",
+      "name": "Iron Deposit",
+      "slug": "iron-deposit",
+      "type": "Deposit",
+      "tier": 1,
+      "resourceIndex": 10,
+      "outputs": 1,
+      "rate": 60,
+      "rateUnit": "h",
+      "spawn": {
+        "availability": "universal",
+        "systemsWithSpawn": 642,
+        "bodiesPerSystem": "variable",
+        "minSystems": 642,
+        "spawnTier": 1,
+        "frequency": "common",
+        "spawnLocations": "All Tier 1 bodies across all systems in NA Infepary"
+      }
+    },
+    {
+      "id": "coal-deposit",
+      "name": "Coal Deposit",
+      "slug": "coal-deposit",
+      "type": "Deposit",
+      "tier": 1,
+      "resourceIndex": 4,
+      "outputs": 1,
+      "rate": 90,
+      "rateUnit": "h",
+      "spawn": {
+        "availability": "universal",
+        "systemsWithSpawn": 642,
+        "bodiesPerSystem": "variable",
+        "minSystems": 642,
+        "spawnTier": 1,
+        "frequency": "common",
+        "spawnLocations": "All Tier 1 bodies across all systems in NA Infepary"
+      }
+    },
+    {
+      "id": "titanium-deposit",
+      "name": "Titanium Deposit",
+      "slug": "titanium-deposit",
+      "type": "Deposit",
+      "tier": 1,
+      "resourceIndex": 15,
+      "outputs": 1,
+      "rate": 60,
+      "rateUnit": "h",
+      "spawn": {
+        "availability": "universal",
+        "systemsWithSpawn": 642,
+        "bodiesPerSystem": "variable",
+        "minSystems": 642,
+        "spawnTier": 1,
+        "frequency": "common",
+        "spawnLocations": "All Tier 1 bodies across all systems in NA Infepary"
+      }
+    },
+    {
+      "id": "copper-deposit",
+      "name": "Copper Deposit",
+      "slug": "copper-deposit",
+      "type": "Deposit",
+      "tier": 1,
+      "resourceIndex": 5,
+      "outputs": 1,
+      "rate": 60,
+      "rateUnit": "h",
+      "spawn": {
+        "availability": "universal",
+        "systemsWithSpawn": 642,
+        "spawnTier": 1,
+        "frequency": "common"
+      }
+    },
+    {
+      "id": "aluminum-deposit",
+      "name": "Aluminum Deposit",
+      "slug": "alu-deposit",
+      "type": "Deposit",
+      "tier": 1,
+      "resourceIndex": 0,
+      "outputs": 1,
+      "rate": 60,
+      "rateUnit": "h",
+      "spawn": {
+        "availability": "universal",
+        "systemsWithSpawn": 642,
+        "spawnTier": 1,
+        "frequency": "common"
+      }
+    },
+    {
+      "id": "platinum-deposit",
+      "name": "Platinum Deposit",
+      "slug": "platinum-deposit",
+      "type": "Deposit",
+      "tier": 1,
+      "resourceIndex": 12,
+      "outputs": 1,
+      "rate": 60,
+      "rateUnit": "h",
+      "spawn": {
+        "availability": "universal",
+        "systemsWithSpawn": 642,
+        "spawnTier": 1,
+        "frequency": "common"
+      }
+    },
+    {
+      "id": "tungsten-deposit",
+      "name": "Tungsten Deposit",
+      "slug": "tungsten-deposit",
+      "type": "Deposit",
+      "tier": 1,
+      "resourceIndex": 16,
+      "outputs": 1,
+      "rate": 60,
+      "rateUnit": "h",
+      "spawn": {
+        "availability": "universal",
+        "systemsWithSpawn": 642,
+        "spawnTier": 1,
+        "frequency": "common"
+      }
+    },
+    {
+      "id": "vanadium-deposit",
+      "name": "Vanadium Deposit",
+      "slug": "vanadium-deposit",
+      "type": "Deposit",
+      "tier": 1,
+      "resourceIndex": 17,
+      "outputs": 1,
+      "rate": 60,
+      "rateUnit": "h",
+      "spawn": {
+        "availability": "universal",
+        "systemsWithSpawn": 642,
+        "spawnTier": 1,
+        "frequency": "common"
+      }
+    }
+  ],
+  "spawnSystem": {
+    "description": "Resources spawn on bodies based on tier. Tier 1 resources appear on Tier 1 bodies across all systems.",
+    "tierDistribution": {
+      "tier0": 642,
+      "tier1": 642,
+      "tier2": 593,
+      "tier3": 489,
+      "tier4": 328,
+      "tier5": 186,
+      "tier6": 65,
+      "tier7": 11
+    },
+    "totalSystems": 642,
+    "totalResourceTypes": 64,
+    "tier1ResourceCount": 18,
+    "data": {
+      "facets": "facets.json",
+      "map": "map.json",
+      "facets.sys": "Contains per-system resource availability indexed by tier and body",
+      "facets.resources": "Complete resource catalog with tier classification"
+    }
+  }
+}

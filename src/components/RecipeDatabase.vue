@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { itemsData } from '../data/items'
+import { createSmartRegex } from '../utils/calculator'
 import Card from 'primevue/card'
 
 const searchQuery = ref('')
 const activeFilter = ref('all') // 'all', 'crafted', 'base'
+const showHelpModal = ref(false)
 
 const itemsList = computed(() => {
   return Object.keys(itemsData).map(key => ({
@@ -14,21 +16,47 @@ const itemsList = computed(() => {
 })
 
 const filteredItems = computed(() => {
+  if (!searchQuery.value.trim()) {
+    return itemsList.value.filter(item => {
+      if (activeFilter.value === 'crafted') return !item.isBase
+      if (activeFilter.value === 'base') return item.isBase
+      return true
+    })
+  }
+
+  const query = searchQuery.value.trim()
+  let regex: RegExp | null = null
+  try {
+    regex = createSmartRegex(query)
+  } catch (e) {
+    // Graceful fallback
+  }
+
   return itemsList.value.filter(item => {
-    const query = searchQuery.value.toLowerCase().trim()
-    
-    // Match by item name, or match if any of its inputs match the name
-    let matchesSearch = item.name.toLowerCase().includes(query)
-    
-    if (!matchesSearch && item.recipes) {
-      matchesSearch = item.recipes.some(recipe => {
-        return Object.keys(recipe.inputs).some(inputId => {
-          const inputName = itemsData[inputId]?.name || inputId
-          return inputName.toLowerCase().includes(query)
+    let matchesSearch = false
+    if (regex) {
+      matchesSearch = regex.test(item.name)
+      if (!matchesSearch && item.recipes) {
+        matchesSearch = item.recipes.some(recipe => {
+          return Object.keys(recipe.inputs).some(inputId => {
+            const inputName = itemsData[inputId]?.name || inputId
+            return regex!.test(inputName)
+          })
         })
-      })
+      }
+    } else {
+      const lowerQuery = query.toLowerCase()
+      matchesSearch = item.name.toLowerCase().includes(lowerQuery)
+      if (!matchesSearch && item.recipes) {
+        matchesSearch = item.recipes.some(recipe => {
+          return Object.keys(recipe.inputs).some(inputId => {
+            const inputName = itemsData[inputId]?.name || inputId
+            return inputName.toLowerCase().includes(lowerQuery)
+          })
+        })
+      }
     }
-    
+
     // Type filter match
     if (activeFilter.value === 'crafted') {
       return matchesSearch && !item.isBase
@@ -55,10 +83,16 @@ const formatName = (key: string) => {
           v-model="searchQuery" 
           placeholder="Search items or inputs..." 
           class="custom-search-input"
+          style="padding-right: 3.25rem;"
         />
-        <button v-if="searchQuery" @click="searchQuery = ''" class="clear-btn">
-          <i class="pi pi-times"></i>
-        </button>
+        <div style="display: flex; align-items: center; gap: 0.25rem; position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%);">
+          <button type="button" @click="showHelpModal = true" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem; display: flex; align-items: center;" title="Search Regex Helper">
+            <i class="pi pi-question-circle"></i>
+          </button>
+          <button v-if="searchQuery" type="button" @click="searchQuery = ''" style="background: none; border: none; color: var(--p-surface-400); cursor: pointer; padding: 0.25rem; display: flex; align-items: center;">
+            <i class="pi pi-times"></i>
+          </button>
+        </div>
       </div>
 
       <div class="filter-tabs">
@@ -148,6 +182,49 @@ const formatName = (key: string) => {
     <div v-else class="empty-results-state">
       <i class="pi pi-search-minus empty-icon"></i>
       <p>No items found matching "{{ searchQuery }}"</p>
+    </div>
+
+    <!-- Search Regex Helper Modal -->
+    <div v-if="showHelpModal" class="modal-backdrop" @click.self="showHelpModal = false">
+      <div class="modal-content help-modal-content">
+        <div class="modal-header">
+          <i class="pi pi-info-circle info-icon-modal"></i>
+          <h3>Regex Search Helper</h3>
+        </div>
+        <div class="modal-body">
+          <p>The search fields support standard text search and **Regular Expressions (Regex)**. The search is case-insensitive.</p>
+          
+          <div class="help-section">
+            <h4>Common Patterns & Examples:</h4>
+            <ul class="help-list">
+              <li>
+                <span class="code-badge">|</span> 
+                <strong>OR Operator:</strong> Match one term or another. Plurals are automatically supported.
+                <div class="example"><code>ingots|ores</code> &rarr; matches items containing "ingot" or "ore".</div>
+              </li>
+              <li>
+                <span class="code-badge">^</span> 
+                <strong>Start Anchor:</strong> Match items starting with a term.
+                <div class="example"><code>^gold</code> &rarr; matches "Gold Nugget", but not "refined gold".</div>
+              </li>
+              <li>
+                <span class="code-badge">$</span> 
+                <strong>End Anchor:</strong> Match items ending with a term.
+                <div class="example"><code>plate$</code> &rarr; matches "Iron Plate", but not "Plate Assembly".</div>
+              </li>
+              <li>
+                <span class="code-badge">.*</span> 
+                <strong>Wildcard:</strong> Match anything in between.
+                <div class="example"><code>copper.*wire</code> &rarr; matches "Copper Wire" and "Copper Coated Wire".</div>
+              </li>
+            </ul>
+          </div>
+          <p class="fallback-note"><em>Note: If you enter an invalid regular expression, the search will temporarily fall back to matching the exact text.</em></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" @click="showHelpModal = false" class="modal-close-btn">Got it</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -462,5 +539,158 @@ const formatName = (key: string) => {
 .empty-results-state p {
   font-size: 1.1rem;
   margin: 0;
+}
+
+/* Custom Confirmation Modal Styling */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content {
+  background: var(--p-surface-900);
+  border: 1px solid var(--p-surface-700);
+  border-radius: var(--p-border-radius);
+  width: 90%;
+  max-width: 400px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.2s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: 1.25rem;
+  color: var(--p-surface-0);
+}
+
+.modal-body {
+  color: var(--p-surface-300);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.modal-close-btn {
+  width: 100%;
+  background-color: var(--p-primary-color);
+  color: var(--p-primary-contrast-color, #ffffff);
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--p-border-radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background-color: var(--p-primary-hover-color, var(--p-primary-600));
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.help-modal-content {
+  max-width: 500px !important;
+}
+
+.help-modal-content .info-icon-modal {
+  font-size: 1.5rem;
+  color: var(--p-primary-500);
+}
+
+.help-section {
+  background-color: var(--p-surface-950);
+  border: 1px solid var(--p-surface-800);
+  border-radius: var(--p-border-radius);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.help-section h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--p-surface-100);
+  font-size: 0.95rem;
+}
+
+.help-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.help-list li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--p-surface-300);
+}
+
+.code-badge {
+  display: inline-block;
+  background-color: var(--p-surface-800);
+  color: var(--p-primary-400);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.example {
+  margin-top: 0.2rem;
+  margin-left: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--p-surface-400);
+}
+
+.example code {
+  background-color: var(--p-surface-800);
+  padding: 0.05rem 0.25rem;
+  border-radius: 3px;
+  color: var(--p-surface-200);
+}
+
+.fallback-note {
+  font-size: 0.85rem;
+  color: var(--p-surface-400);
+  margin-top: 1rem;
 }
 </style>

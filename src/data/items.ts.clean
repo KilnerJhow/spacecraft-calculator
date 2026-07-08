@@ -673,6 +673,13 @@ export const itemsData: Record<string, Item> = {
         "inputs": {
           "titanium_ore": 2
         }
+      },
+      {
+        "id": "titanium_ingot_from_nugget",
+        "yield": 1,
+        "inputs": {
+          "titanium_nugget": 4
+        }
       }
     ]
   },
@@ -1638,7 +1645,7 @@ export const itemsData: Record<string, Item> = {
         "id": "steel_casing_mk_1_recipe",
         "yield": 1,
         "inputs": {
-          "beam_1": 12,
+          "beam_1": 6,
           "plate_1": 4
         }
       }
@@ -1653,7 +1660,7 @@ export const itemsData: Record<string, Item> = {
         "id": "titanium_casing_mk_1_recipe",
         "yield": 1,
         "inputs": {
-          "beam_2": 12,
+          "beam_2": 8,
           "plate_2": 4
         }
       }

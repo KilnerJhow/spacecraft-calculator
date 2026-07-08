@@ -1,0 +1,9 @@
+services:
+  spacecraft-calculator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spacecraft-calculator
+    ports:
+      - "8080:80"
+    restart: unless-stopped
