@@ -754,6 +754,13 @@ export const itemsData: Record<string, Item> = {
         "inputs": {
           "titanium_ore": 2
         }
+      },
+      {
+        "id": "titanium_ingot_from_nugget",
+        "yield": 1,
+        "inputs": {
+          "titanium_nugget": 4
+        }
       }
     ],
     "weight": 1
@@ -1059,6 +1066,22 @@ export const itemsData: Record<string, Item> = {
         "inputs": {
           "quartz": 1,
           "wire": 5
+        }
+      },
+      {
+        "id": "focuser_from_h_crystal",
+        "yield": 1,
+        "inputs": {
+          "crystal_lattice_h": 9,
+          "wire": 3
+        }
+      },
+      {
+        "id": "focuser_from_m_crystal",
+        "yield": 2,
+        "inputs": {
+          "crystal_lattice_m": 6,
+          "wire": 6
         }
       }
     ],
@@ -1667,6 +1690,13 @@ export const itemsData: Record<string, Item> = {
         "inputs": {
           "diamond": 1
         }
+      },
+      {
+        "id": "crystal_lattice_c_from_pyrite",
+        "yield": 3,
+        "inputs": {
+          "pyrite": 1
+        }
       }
     ],
     "weight": 0.1
@@ -1788,7 +1818,7 @@ export const itemsData: Record<string, Item> = {
         "id": "steel_casing_mk_1_recipe",
         "yield": 1,
         "inputs": {
-          "beam_1": 12,
+          "beam_1": 6,
           "plate_1": 4
         }
       }
@@ -1804,7 +1834,7 @@ export const itemsData: Record<string, Item> = {
         "id": "titanium_casing_mk_1_recipe",
         "yield": 1,
         "inputs": {
-          "beam_2": 12,
+          "beam_2": 8,
           "plate_2": 4
         }
       }

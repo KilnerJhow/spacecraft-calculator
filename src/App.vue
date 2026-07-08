@@ -4,6 +4,7 @@ import RecipeCalculator from './components/RecipeCalculator.vue'
 import RecipeDatabase from './components/RecipeDatabase.vue'
 import PriceCalculator from './components/PriceCalculator.vue'
 import ProfitAnalyzer from './components/ProfitAnalyzer.vue'
+import BlueprintCompare from './components/BlueprintCompare.vue'
 
 const activeTab = ref('calculator')
 </script>
@@ -43,6 +44,13 @@ const activeTab = ref('calculator')
           <i class="pi pi-chart-line nav-icon"></i>
           Value Analysis
         </button>
+        <button 
+          :class="['nav-btn', { active: activeTab === 'blueprints' }]"
+          @click="activeTab = 'blueprints'"
+        >
+          <i class="pi pi-objects-column nav-icon"></i>
+          Blueprint Compare
+        </button>
       </div>
     </header>
     <main class="main-content">
@@ -50,6 +58,7 @@ const activeTab = ref('calculator')
       <RecipeDatabase v-show="activeTab === 'recipes'" />
       <PriceCalculator v-show="activeTab === 'prices'" />
       <ProfitAnalyzer v-show="activeTab === 'analyzer'" />
+      <BlueprintCompare v-show="activeTab === 'blueprints'" />
     </main>
   </div>
 </template>
